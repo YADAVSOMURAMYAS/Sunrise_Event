@@ -119,6 +119,7 @@ const transporter = require('../config/nodemailer.js');
             text: `Your OTP for account verification is ${otp}. This OTP will expire in 24 hours. Verify your account using this OTP. Thank you!`
         };
         await transporter.sendMail(mailOptions);
+return res.status(200).json({ success: true, message: 'OTP sent successfully' });
     } catch(err){
         return res.status(500).json({success:false, message: err.message});
     }
@@ -153,7 +154,7 @@ const transporter = require('../config/nodemailer.js');
  const isAuthenticated=async(req,res)=>{
     try{
        
-        return res.json({success:false});
+        return res.json({success:true,message:'Authentication successful'});
     } catch(err){
         return res.json({success:false,message:err.message});
     }
