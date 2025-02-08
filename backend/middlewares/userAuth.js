@@ -1,6 +1,6 @@
-import jwt from 'jsonwebtoken';
+const jwt= require('jsonwebtoken');
 
-export const userAuth = async (req, res, next) => {
+const userAuth = async (req, res, next) => {
     const {token}=req.cookies;
     if(!token){
         return res.status(401).json({message: 'Not authorized login again'});
@@ -21,3 +21,4 @@ export const userAuth = async (req, res, next) => {
     }
 
 }
+module.exports =userAuth;
