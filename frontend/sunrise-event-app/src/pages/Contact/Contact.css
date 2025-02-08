@@ -14,9 +14,12 @@
     flex-wrap: wrap;
     padding: 40px;
     background: #ffffff;
+    border: #000f38 30px ;
+    box-shadow:  15px 20px 40px rgba(41, 36, 36, 0.952);
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   
 }
+
 
 /* Left Column (Text & Contact Info) */
 .contact-column {
@@ -135,6 +138,7 @@
 
 .title{
     margin: 0px;
+   
 }
 .title img{
     height: 100px;

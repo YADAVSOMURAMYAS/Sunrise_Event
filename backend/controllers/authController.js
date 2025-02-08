@@ -1,9 +1,11 @@
+import userModel from '../models/userModel';
+
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 require('dotenv').config();
 const transporter = require('../config/nodemailer.js');
-const  register=async(req,res)=>{
+export const  register=async(req,res)=>{
     const {
         name,
         email,
@@ -34,8 +36,9 @@ const  register=async(req,res)=>{
         httpOnly: true,
         secure: process.env.NODE_ENV==='production'?true:false,
         sameSite: process.env.NODE_ENV==='production'?'none':'strict',
-        maxAge: 1000*60*60*7
+        maxAge: 1000*60*60*7*24
     })
+    //Sending Welcome email when user create account for the first time
     const mailOptions = {
         from: process.env.SENDER_EMAIL || "varad.jadhav21@gmail.com",
         to: req.body.email,
@@ -51,7 +54,7 @@ const  register=async(req,res)=>{
     }
 }
 
-const login=async(req,res)=>{
+export const login=async(req,res)=>{
     const {
         email,
         password
@@ -77,7 +80,7 @@ const login=async(req,res)=>{
         httpOnly: true,
         secure: process.env.NODE_ENV==='production'?true:false,
         sameSite: process.env.NODE_ENV==='production'?'none':'strict',
-        maxAge: 1000*60*60*7
+        maxAge: 1000*60*60*7*24
     })
     return res.json({success:true});
     }
@@ -85,7 +88,7 @@ const login=async(req,res)=>{
         return res.status(400).json({success:false});
 }
 }
-const logout=async(req,res)=>{
+export const logout=async(req,res)=>{
     try{
         res.clearCookie('token',{ httpOnly: true,
             secure: process.env.NODE_ENV==='production'?true:false,
@@ -97,9 +100,74 @@ const logout=async(req,res)=>{
             return res.status(500).json({success:false});
         }
     }
-module.exports ={
-    register,
-    login,
-    logout
- 
-};
+export const sendVerifyOtp=async(req,res)=>{
+    try{
+        const {userId}=req.body;
+        const user=await userModel.findById(userId);
+        
+        if(user.isAccountVerified){
+            return res.status(400).json({success:false,message:'Account already verified'});
+        }
+        const otp=String(Math.floor(100000+Math.random()*900000));
+        user.verifyOtp=otp;
+        user.OtpExpireAt=Date.now()+24*60*60*1000;
+        await user.save();
+        const mailOptions = {
+            from: process.env.SENDER_EMAIL || "varad.jadhav21@gmail.com",
+            to: user.email,
+            subject: 'Account Verification OTP',
+            text: `Your OTP for account verification is ${otp}. This OTP will expire in 24 hours. Verify your account using this OTP. Thank you!`
+        };
+        await transporter.sendMail(mailOptions);
+    } catch(err){
+        return res.status(500).json({success:false, message: err.message});
+    }
+}
+export const verifyEmail=async(req,res)=>{
+    const {userId,otp}=req.body;
+    if(!userId || !otp){
+        return res.status(400).json({success:false,message:'Missing details'});
+    }
+    try {
+        const user=await userModel.findById(userId);
+        if(!user){
+            return res.status(400).json({success:false,message:'User not found'});
+        }
+        if(user.verifyOtp ==='' ||user.verifyOtp!==otp){
+            return res.status(400).json({success:false,message:'Invalid OTP'});
+        }
+        if(user.OtpExpireAt<Date.now()){
+            return res.status(400).json({success:false,message:'OTP expired'});
+        }
+        user.isAccountVerified=true;
+        user.verifyOtp='';
+        user.OtpExpireAt=0;
+        await user.save();
+        return res.json({success:true,message:'Account verified successfully'});
+        
+    } catch (error) {
+        return res.status(500).json({success:false,message:error.message});
+    }
+
+}
+export const isAuthenticated=async(req,res)=>{
+    try{
+       
+        return res.json({success:false});
+    } catch(err){
+        return res.json({success:false,message:err.message});
+    }
+}
+export const sendResetOtp=async(req,res)=>{ 
+    const {email}=req.body;
+    if(!email){
+        return res.status(400).json({success:false,message:'Email is required'});
+    }
+    try {
+        const user=await userModel.findOne({email});
+        if(!user){
+            return res.status(400).json({success:false,message:'User not found'});
+        }
+    } catch (error) {
+        return res.status(500).json({success:false,message:error.message});
+    }}

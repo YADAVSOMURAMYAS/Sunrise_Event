@@ -38,7 +38,10 @@ const Contact = () => {
     <div className='contact-container'>
       <Navbar />
       
-      <div className="title"><img src={logo} alt="" /><Title subTitle="Contact Us" title="Let's Plan Your Dream Event!" /></div>
+      <div className="title">
+      <p>CONTACT US</p>
+        <div className="subheading"><img src={logo} alt="" /><h2>Let's Plan Your Dream Event</h2></div>
+      </div>
 
       <div className="contact">
         <div className="contact-column">
