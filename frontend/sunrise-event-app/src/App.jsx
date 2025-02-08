@@ -9,9 +9,6 @@ import Gallery from './pages/Gallery/Gallery'
 import Contact from './pages/Contact/Contact'
 import Booking from './pages/Booking/Booking'
 
-
-
-
 function App() {
     const router=createBrowserRouter(
       [
