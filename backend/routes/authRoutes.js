@@ -9,7 +9,7 @@ const {
     sendResetOtp,
     resetPassword
 }= require('../controllers/authController.js');
-const { userAuth } = require('../middlewares/userAuth.js');
+const userAuth=require('../middlewares/userAuth.js');
 
 const authRouter = express.Router();
 authRouter.post('/register',register);
