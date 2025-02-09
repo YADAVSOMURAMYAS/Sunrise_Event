@@ -12,6 +12,7 @@ function Navbar() {
 
   return (
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <div className="container">
       <div className="navbox">
       <div className="brand " >
@@ -27,6 +28,8 @@ function Navbar() {
       </div>
     </div>
 =======
+=======
+>>>>>>> Stashed changes
     <nav className="navbar ">
       <div className="brand">
         <h2>Sunrise Event</h2>

@@ -1,5 +1,6 @@
 @import "tailwindcss";
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 .navbox {
     display: flex;
     justify-content: end;
@@ -110,6 +111,70 @@ nav {
     display: flex;
   }
 
+=======
+
+nav {
+  width: 100%;
+  background: rgb(236, 224, 181);
+  color: #333;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  height: 50px;
+  backdrop-filter: blur(100px);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  
+}
+
+.toggle-button {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.toggle-button .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 4px 0;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin: 0 1rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+}
+
+.nav-links.active {
+  display: block;
+}
+
+@media (max-width: 1100px) {
+  .toggle-button {
+    display: flex;
+  }
+
+>>>>>>> Stashed changes
   .nav-links {
     display: none;
     flex-direction: column;
@@ -168,5 +233,9 @@ nav ul li {
 
 .menu-icon {
   display: none;
+<<<<<<< Updated upstream
+}
+>>>>>>> Stashed changes
+=======
 }
 >>>>>>> Stashed changes
