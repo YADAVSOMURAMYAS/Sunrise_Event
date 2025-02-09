@@ -16,7 +16,7 @@ function Navbar() {
         <li><Link to="/gallery">Gallery</Link></li>
         <li><Link to="/booking">Booking</Link></li>
         <li><Link to="/contact">Contact us</Link></li>
-        <li className=" flex items-center"><Link to="/login">Log in <img src={arrow_icon} alt="" /></Link></li>
+        <li className="login"><Link to="/login">Log in <img src={arrow_icon} alt="" /></Link></li>
       </ul>
     </nav>
   );
