@@ -74,7 +74,7 @@ const Contact = () => {
               Submit Now <img src={white_arrow} alt="Arrow Icon" />
             </button>
           </form>
-          <span>{result}</span>
+          <span className='result'>{result}</span>
         </div>
       </div>
     </div>

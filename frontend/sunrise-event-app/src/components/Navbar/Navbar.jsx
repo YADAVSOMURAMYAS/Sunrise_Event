@@ -5,20 +5,20 @@ import arrow_icon from "../../assets/arrow_icon.svg"
 
 function Navbar() {
   return (
-    <nav className="navbar">
-      <div className="brand ">
-        <h2>Sunrise Event</h2>
+    <div className="container">
+      <div className="navbox">
+      <div className="brand " >
+        Sunrise Event
       </div>
-
-      <ul className="nav-links ">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/services">Services</Link></li>
-        <li><Link to="/gallery">Gallery</Link></li>
-        <li><Link to="/booking">Booking</Link></li>
-        <li><Link to="/contact">Contact us</Link></li>
-        <li className="login"><Link to="/login">Log in <img src={arrow_icon} alt="" /></Link></li>
-      </ul>
-    </nav>
+        <a href="/" className="home">Home</a>
+        <a href="/about">Gallery</a>
+        <a href="/services">Services</a>
+        <a href="/booking">Booking</a>
+        <a href="/contact">Contact</a>
+        <a href="/login" ><div className="login">Log In<img src={arrow_icon} alt="" style={{ paddingTop: "2px" ,width:"17px"}}/></div></a>
+        
+      </div>
+    </div>
   );
 }
 
