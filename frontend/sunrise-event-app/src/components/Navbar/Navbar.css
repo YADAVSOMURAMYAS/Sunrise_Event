@@ -1,10 +1,9 @@
 @import "tailwindcss";
-
 .navbox {
     display: flex;
     justify-content: end;
     align-items: center;
-    background-color: rgb(234, 224, 213);
+    background-color: rgb(234,224,213);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     position: fixed;
@@ -12,149 +11,38 @@
     left: 0;
     right: 0;
     z-index: 2;
-    padding: 10px;
+    padding:10px;
     padding-right: 70px;
-}
 
-.navbox a {
+  }
+  
+  .navbox a {
     margin: 0 15px;
     text-decoration: none;
     font-size: 20px;
+    margin-bottom: 5px;
     font-weight: 450;
     opacity: 80%;
-}
-
-.navbox .active {
+    
+  }
+  
+  .navbox .active {
     color: #3498DB;
-}
-
-.login {
+  }
+  
+  .login{
     display: grid;
     grid-template-columns: auto auto;
     gap: 10px;
-}
-
-.brand {
+    
+  }
+  
+ .brand{
     position: absolute;
     left: 50px;
+    margin: 0 15px;
     text-decoration: none;
     font-size: 30px;
+    margin-bottom: 5px;
     font-weight: 500;
-}
-
-nav {
-    width: 100%;
-    background: rgb(236, 224, 181);
-    color: #333;
-    padding: 0 10px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 10;
-    height: 50px;
-    backdrop-filter: blur(100px);
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-}
-
-.toggle-button {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.toggle-button .bar {
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    margin: 4px 0;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    padding-right: 10px;
-}
-
-.nav-links li {
-    margin: 0 1rem;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #333;
-}
-
-.nav-links.active {
-    display: block;
-}
-
-/* Responsive Navbar */
-@media (max-width: 1100px) {
-    .toggle-button {
-        display: flex;
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: rgb(234, 224, 213);
-        position: absolute;
-        top: 50px;
-        left: 0;
-        padding: 1rem 0;
-    }
-
-    .nav-links li {
-        margin: 1rem 0;
-        text-align: center;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.brand h2 {
-    padding-left: 20px;
-    font-size: 30px;
-    color: black;
-}
-
-.login {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-nav ul li {
-    list-style: none;
-    display: inline-block;
-    margin: 5px 20px;
-    font-size: 20px;
-    color: black;
-    padding: 15px;
-}
-
-.dark-nav {
-    background: #212ea0;
-    transition: 0.5s;
-}
-
-.menu-icon {
-    display: none;
-}
+ }
