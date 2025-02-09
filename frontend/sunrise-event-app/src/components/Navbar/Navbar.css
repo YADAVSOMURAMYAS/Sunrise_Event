@@ -30,6 +30,10 @@ nav{
     font-size: 30px;
     color: black;
 }
+.login{
+display: inline-block;
+    margin-right: 20px;
+}
 nav ul li {
     list-style: none;
     display: inline-block;
@@ -39,7 +43,7 @@ nav ul li {
     padding: 15px;
 }
 .nav-links{
-    padding-right: 100px;
+    padding-right: 10px;
 }
 .dark-nav{
     background: #212ea0;

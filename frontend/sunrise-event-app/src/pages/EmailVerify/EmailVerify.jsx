@@ -1,8 +1,10 @@
 import React from 'react'
 import './EmailVerify.css'
 
-export const EmailVerify = () => {
+ const EmailVerify = () => {
   return (
-    <div>EmailVerify</div>
+    <div><h1>Email Verifiy page</h1></div>
   )
 }
+
+export default EmailVerify;

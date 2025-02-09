@@ -1,11 +1,15 @@
 import React from 'react'
 import './ResetPassWord.css'
-export const ResetPassWord = () => {
+ const ResetPassWord = () => {
   return (
     <div>
-      ResetPassWord
+      <h1>
+        Reset Password Page
+      </h1>
 
 
     </div>
   )
 }
+
+export default ResetPassWord;
