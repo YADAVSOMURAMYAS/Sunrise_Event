@@ -1,6 +1,6 @@
 /* PageNotFound.css */
 .page-not-found {
-    background: linear-gradient(to right, #dc548f, #6bbfe3); /* Pink to Blue Gradient */
+    background: linear-gradient(to right, #d02770, #2b5cc6); /* Pink to Blue Gradient */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -30,7 +30,7 @@
 .page-not-found h1 {
     font-size: 1.875rem; /* text-3xl */
     font-weight: bold;
-    color: #1f2937; /* text-gray-800 */
+    color: #0e1116; /* text-gray-800 */
     margin-bottom: 16px;
     animation: slideIn 1s ease-in-out;
 }
@@ -38,7 +38,7 @@
 /* Paragraph */
 .page-not-found p {
     font-size: 1.125rem; /* text-lg */
-    color: #4b5563; /* text-gray-600 */
+    color: #101113; /* text-gray-600 */
     max-width: 500px;
     padding: 0 16px;
     margin-bottom: 40px;
@@ -48,7 +48,7 @@
 .page-not-found button {
     width: 250px;
     height: 70px;
-    background-color: #d62bac; /* Purple */
+    background-color: #b49b47c6; /* Purple */
     color: white;
     font-weight: 600;
     font-size: 1.25rem; /* text-xl */
