@@ -1,17 +1,13 @@
 import React from "react";
-import "./Footer.css"; // Import CSS
-import logo from "../../assets/logo.png"; // Import Logo (Place it inside 'src' folder)
+import "./Footer.css";
+import logo from "../../assets/logo.png";
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        {/* Logo and Branding */}
-        <div className="footer-section brand">
-          <img src={logo} alt="Sunrise Event Logo" className="logo" />
-          <h2>Sunrise Event</h2>
-          <p className="text-slate-950">Your trusted partner in creating memorable experiences.</p>
-        </div>
+        
+        
 
         {/* Contact Information */}
         <div className="footer-section">
@@ -23,7 +19,7 @@ const Footer = () => {
 
         {/* About the Company */}
         <div className="footer-section">
-          <h3>About Sunrise Event</h3>
+          <h3>About Us</h3>
           <p>Sunrise Event specializes in weddings, corporate events, and private parties. We bring your vision to life with elegance and perfection.</p>
         </div>
 

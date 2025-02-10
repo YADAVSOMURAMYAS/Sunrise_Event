@@ -1,22 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import arrow_icon from "../../assets/arrow_icon.svg"
+import arrow_icon from "../../assets/arrow_icon.svg";
 
 function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="container">
-      <div className="navbox">
-      <div className="brand " >
-        Sunrise Event
-      </div>
-        <a href="/" className="home">Home</a>
-        <a href="/gallery">Gallery</a>
-        <a href="/services">Services</a>
-        <a href="/booking">Booking</a>
-        <a href="/contact">Contact</a>
-        <a href="/login" ><div className="login">Log In<img src={arrow_icon} alt="" style={{ paddingTop: "8px" ,width:"17px"}}/></div></a>
-        
+      <div className={`navbox ${scrolled ? "scrolled" : ""}`}>
+        <div className="brand">Sunrise Event</div>
+        <Link to="/" className="home">Home</Link>
+        <Link to="/gallery">Gallery</Link>
+        <Link to="/services">Services</Link>
+        <Link to="/booking">Booking</Link>
+        <Link to="/contact">Contact</Link>
+        <Link to="/login">
+          <div className="login bg-colour">
+            Log In
+             </div>
+        </Link>
       </div>
     </div>
   );
