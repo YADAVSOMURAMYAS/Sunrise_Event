@@ -1,0 +1,112 @@
+/* Container with blur effect */
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 1.5rem;
+    background: rgba(255, 237, 213, 0.5); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Blur effect */
+}
+
+/* Logo positioning */
+.login-logo {
+    position: absolute;
+    left: 1.25rem; /* left-5 */
+    top: 1.25rem; /* top-5 */
+    width: 7rem; /* w-28 */
+    cursor: pointer;
+}
+
+/* Login form container with glass effect */
+.login-form-container {
+    background: rgba(254, 243, 199, 0.9); /* Semi-transparent background */
+    padding: 2.5rem;
+    border-radius: 0.75rem; /* More rounded */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+                0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 24rem;
+    color: #000; /* Black text */
+    font-size: 0.875rem;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for glassmorphism */
+}
+
+/* Title and subtitle */
+.login-form-title {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 600;
+    color: #000;
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.login-form-subtitle {
+    text-align: center;
+    color: #000;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Input fields */
+.login-input-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.625rem 1.25rem;
+    border-radius: 9999px; /* Fully rounded */
+    background-color: rgba(241, 245, 249, 0.7); /* Semi-transparent */
+    backdrop-filter: blur(5px); /* Blur effect inside */
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+}
+
+.login-input {
+    background-color: transparent;
+    color: #000;
+    outline: none;
+    border: none;
+    width: 100%;
+    font-size: 1rem;
+}
+
+/* Forgot password text */
+.login-forgot-password {
+    color: #60a5fa;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    text-align: right;
+    font-size: 0.875rem;
+}
+
+/* Button styling */
+.login-button {
+    width: 100%;
+    padding: 0.625rem;
+    border-radius: 15px;
+    background-color: #fde047;
+    border: 3px solid #facc15;
+    color: #000;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #facc15;
+}
+
+/* Toggle between Login and Sign Up */
+.login-toggle-text {
+    text-align: center;
+    color: #000;
+    font-size: 0.875rem;
+    margin-top: 0.75rem;
+}
+
+.login-toggle-link {
+    color: #60a5fa;
+    cursor: pointer;
+    text-decoration: underline;
+}
