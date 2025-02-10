@@ -1,0 +1,24 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px; /* Adjust spacing as needed */
+}
+button {
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    background-color: #f3f1edc6; /* Purple */
+    color: rgb(20, 20, 20);
+    font-weight: 600;
+     /* text-xl */
+    border: 2px solid ;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+button:hover {
+    color: rgb(254, 252, 252);
+    background-color: #1143e6; /* Orange */
+    transform: scale(1.1);
+}
