@@ -20,127 +20,52 @@
 
 /* Navbar Styling */
 .navbox {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 12px 70px;
-  background-color: rgba(28, 27, 27, 0.9); /* Darker Navbar */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  animation: slideDown 0.5s ease-out;
-  transition: all 0.3s ease-in-out;
-}
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    background-color: rgb(234,224,213);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding:10px;
+    padding-right: 70px;
+    background-color: rgba(255, 255, 255, 0.7); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    z-index: 1000; 
 
-/* Scroll Effect - Keep it Dark */
-.navbox.scrolled {
-  background-color: rgba(20, 20, 20, 0.95); /* Slightly Darker on Scroll */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-  padding: 10px 50px;
-}
 
-.navbox a {
-  margin: 0 15px;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 500;
-  color: #fff; /* White Text */
-  position: relative;
-  padding: 5px 0;
-  transition: all 0.3s ease;
-}
-
-.navbox a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #E6B800;
-  transition: width 0.3s ease;
-}
-
-.navbox a:hover {
-  color: #E6B800;
-}
-
-.navbox a:hover::after {
-  width: 100%;
-}
-
-.navbox .active {
-  color: #E6B800 !important;
-}
-
-.navbox .active::after {
-  width: 100%;
-}
-
-/* Login Button */
-.login {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
-  color: #fff; /* White Text */
-}
-
-.arrow-icon {
-  padding-top: 5px;
-  width: 17px;
-  transition: transform 0.3s ease;
-}
-
-.login:hover {
-  color: #E6B800;
-}
-
-.login:hover .arrow-icon {
-  transform: translateX(3px);
-}
-
-/* Brand Name */
-.brand {
-  position: absolute;
-  left: 50px;
-  font-size: 28px;
-  font-weight: 600;
-  animation: fadeInLeft 0.8s ease-out;
-  color: #fff; /* White Brand Text */
-  transition: color 0.3s ease;
-}
-
-.brand:hover {
-  color: #E6B800;
-}
-
-/* Focus States */
-.navbox a:focus-visible {
-  outline: 2px solid #E6B800;
-  outline-offset: 3px;
-  border-radius: 3px;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .navbox {
-    padding-right: 20px;
-    justify-content: center;
   }
-
-  .brand {
-    left: 20px;
-    font-size: 24px;
-  }
-
+  
   .navbox a {
-    font-size: 16px;
-    margin: 0 10px;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-weight: 450;
+    opacity: 80%;
+    
   }
-}
+  
+  .navbox .active {
+    color: #3498DB;
+  }
+  
+  .login{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    
+  }
+  
+ .brand{
+    position: absolute;
+    left: 50px;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 30px;
+    margin-bottom: 5px;
+    font-weight: 500;
+ }

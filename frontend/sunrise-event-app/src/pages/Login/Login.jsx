@@ -3,17 +3,19 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import logo from '../../assets/logo.png';
-import person from '../../assets/person_icon.svg';
 import { AppContent } from '../../context/AppContext';
-import mail from '../../assets/mail_icon.svg'
-import lock from '../../assets/lock_icon.svg'
+import MailIcon from '@mui/icons-material/Mail';
+import PersonIcon from '@mui/icons-material/Person';
+import LockIcon from '@mui/icons-material/Lock';
+import Button from '@mui/material/Button';
+import './Login.css'; // Import the CSS file
 
 const Login = () => {
   const [state, setState] = useState('Sign Up');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const { backendUrl, setIsLoggedin ,getUserData} = useContext(AppContent); // Assuming setIsLoggedIn is provided by AppContent
+  const { backendUrl, setIsLoggedin, getUserData } = useContext(AppContent);
   const navigate = useNavigate();
 
   const onSubmitHandler = async (e) => {
@@ -29,7 +31,7 @@ const Login = () => {
         if (data.success) {
           console.log('Login/Signup successful');
           setIsLoggedin(true);
-          getUserData(); // Assuming getUserData is provided by AppContent to fetch user data
+          getUserData();
           navigate('/');
         } else {
           toast.error(data.message);
@@ -42,99 +44,110 @@ const Login = () => {
         if (data.success) {
           console.log('Login/Signup successful');
           setIsLoggedin(true);
-          getUserData(); 
+          getUserData();
           navigate('/');
         } else {
           toast.error(data.message);
         }
       }
-    } 
-      catch (err) {
-        console.error('Error during login/signup:', err);
-        console.error('Error response:', err.response);
-        toast.error(err.response?.data?.message || 'An error occurred');
-      }
-    
+    } catch (err) {
+      console.error('Error during login/signup:', err);
+      console.error('Error response:', err.response);
+      toast.error(err.response?.data?.message || 'An error occurred');
+    }
   };
 
   return (
-    <div className='flex bg-orange-100 items-center justify-center min-h-screen px-6 sm:px-0 '>
+    <div className="login-container">
       <img
         onClick={() => navigate('/')}
         src={logo}
-        alt=''
-        className='absolute left-5 sm:left-20 top-5 w-28 sm:w-32 cursor-pointer'
+        alt="Logo"
+        className="login-logo"
       />
-      <div className=' bg-amber-100 p-10 rounded-lg shadow-lg w-full sm:w-96 text-indigo-300 text-sm'>
-        <h2 className='text-3xl  font-semibold text-black text-center mb-3'>
+      <div className="login-form-container">
+        <h2 className="login-form-title">
           {state === 'Sign Up' ? 'Create Account' : 'Login'}
         </h2>
-        <p className='text-center text-black text-sm mb-6'>
+        <p className="login-form-subtitle">
           {state === 'Sign Up' ? 'Create Your Account' : 'Login to Your Account'}
         </p>
         <form onSubmit={onSubmitHandler}>
           {state === 'Sign Up' && (
-            <div className='mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-slate-100'>
-              <img src={person} alt=''></img>
+            <div className="login-input-container">
+              <PersonIcon sx={{ color: 'black' }} />
               <input
                 onChange={(e) => setName(e.target.value)}
                 value={name}
-                className='bg-transparent text-gray-400 outline-none'
-                type='text'
-                placeholder='Full Name'
+                className="login-input"
+                type="text"
+                placeholder="Full Name"
                 required
-              ></input>
+              />
             </div>
           )}
-          <div className='mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-slate-100'>
-            <img src={mail} alt=''></img>
+          <div className="login-input-container">
+            <MailIcon sx={{ color: 'black' }} />
             <input
               onChange={(e) => setEmail(e.target.value)}
               value={email}
-              type='email'
-              className='bg-transparent text-gray-400 outline-none'
-              placeholder='Email Id'
+              type="email"
+              className="login-input"
+              placeholder="Email Id"
               required
             />
           </div>
-          <div className='mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-slate-100'>
-            <img src={lock} alt=''></img>
+          <div className="login-input-container">
+            <LockIcon sx={{ color: 'black' }} />
             <input
               onChange={(e) => setPassword(e.target.value)}
               value={password}
-              type='password'
-              className='bg-transparent text-gray-400 outline-none'
-              placeholder='Password'
+              type="password"
+              className="login-input"
+              placeholder="Password"
               required
             />
           </div>
           <p
             onClick={() => navigate('/reset-password')}
-            className='mb-4 text-blue-400 cursor-pointer'
+            className="login-forgot-password"
           >
             Forgot Password?
           </p>
-          <button
-            className='w-full py-2.5 rounded-full border-3 bg-yellow-300 border-yellow-400 text-black font-md hover:bg-yellow-400 '
-          >
-            {state}
-          </button>
+          <Button
+  type="submit"
+  variant="contained"
+  fullWidth
+  sx={{
+    backgroundColor: '#fde047', // Yellow-300
+    color: '#000', // Black text
+    fontFamily:"Outfit",
+    borderRadius:"15px",
+    '&:hover': {
+      backgroundColor: '#facc15', // Yellow-400 on hover
+      transform: 'none', // Prevent scaling
+    },
+    transition: 'background-color 0.3s ease', // Smooth transition for background color
+  }}
+>
+  {state}
+</Button>
           {state === 'Sign Up' ? (
-            <p className='text-black text-center text-s mt-3'>
+            <p className="login-toggle-text">
               Already Have an Account?{' '}
               <span
                 onClick={() => setState('Login')}
-                className='text-blue-400 cursor-pointer underline'
+                className="login-toggle-link"
               >
                 Login Here
               </span>
             </p>
           ) : (
-            <p className='text-black text-center text-s mt-3'>
+            <p className="login-toggle-text">
               Don't Have an Account?{' '}
               <span
                 onClick={() => setState('Sign Up')}
-                className='text-blue-400 cursor-pointer underline'
+                className="login-toggle-link"
               >
                 SignUp
               </span>
