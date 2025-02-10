@@ -11,11 +11,11 @@ function Navbar() {
         Sunrise Event
       </div>
         <a href="/" className="home">Home</a>
-        <a href="/about">Gallery</a>
+        <a href="/gallery">Gallery</a>
         <a href="/services">Services</a>
         <a href="/booking">Booking</a>
         <a href="/contact">Contact</a>
-        <a href="/login" ><div className="login">Log In<img src={arrow_icon} alt="" style={{ paddingTop: "2px" ,width:"17px"}}/></div></a>
+        <a href="/login" ><div className="login">Log In<img src={arrow_icon} alt="" style={{ paddingTop: "8px" ,width:"17px"}}/></div></a>
         
       </div>
     </div>

@@ -8,7 +8,7 @@ import Service from './pages/Service/Service'
 import Gallery from './pages/Gallery/Gallery'
 import Contact from './pages/Contact/Contact'
 import Booking from './pages/Booking/Booking'
-
+import { ToastContainer} from 'react-toastify';
 import EmailVerify from './pages/EmailVerify/EmailVerify'
 
 import ResetPassword from './pages/ResetPassWord/ResetPassWord'
@@ -21,6 +21,7 @@ function App() {
 
  return(
   <div>
+    <ToastContainer />
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
