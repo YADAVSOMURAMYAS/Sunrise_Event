@@ -8,6 +8,8 @@ import msg_icon from '../../assets/msg-icon.png';
 import white_arrow from '../../assets/white-arrow.png';
 import Title from '../../components/Title/Title';
 import logo from '../../assets/logo.png';
+import Footer from '../../components/Footer/Footer';
+
 
 const Contact = () => {
   const [result, setResult] = React.useState("");
@@ -77,6 +79,7 @@ const Contact = () => {
           <span className='result'>{result}</span>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
