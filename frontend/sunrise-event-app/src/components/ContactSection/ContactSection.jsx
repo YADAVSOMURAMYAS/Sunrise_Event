@@ -4,13 +4,13 @@ import "./ContactSection.css";
 
 const ContactSection = () => {
   return (
-    <section className="contact-container">
+    <section className="contact-section">
       <h2>Get in Touch</h2>
       <p>
         Have questions or need assistance? Reach out to us! We are here to help
         you plan and execute the perfect event.
       </p>
-      <div className="contact-info">
+      <div className="contact-details">
         <p>
           <span className="icon">📞</span> Phone: <strong>9879879874</strong>
         </p>
@@ -23,7 +23,7 @@ const ContactSection = () => {
         </p>
       </div>
       <Link to="/contact">
-        <button className="contact-button">Contact Us →</button>
+        <button className="contact-btn">Contact Us →</button>
       </Link>
     </section>
   );

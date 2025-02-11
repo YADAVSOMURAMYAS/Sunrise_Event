@@ -1,5 +1,5 @@
 /* --- Contact Section Styling --- */
-.contact-container {
+.contact-section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,18 +10,18 @@
     border-radius: 15px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
     max-width: 90%;
-    margin: 80px auto; /* More margin for better spacing */
+    margin: 80px auto;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 /* Contact Section Hover Effect */
-.contact-container:hover {
+.contact-section:hover {
     transform: scale(1.02);
     box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3);
 }
 
 /* Heading Styles */
-.contact-container h2 {
+.contact-section h2 {
     font-size: 2.5rem;
     margin-bottom: 15px;
     font-weight: bold;
@@ -29,19 +29,19 @@
 }
 
 /* Heading Hover Effect */
-.contact-container:hover h2 {
+.contact-section:hover h2 {
     color: #ffd700; /* Golden effect on hover */
 }
 
 /* Text Styles */
-.contact-container p {
+.contact-section p {
     font-size: 1.2rem;
     margin-bottom: 20px;
     transition: color 0.3s ease-in-out;
 }
 
 /* Contact Info Styling */
-.contact-info p {
+.contact-details p {
     font-size: 1.2rem;
     margin-bottom: 10px;
     display: flex;
@@ -51,12 +51,12 @@
 }
 
 /* Hover Effect for Icons */
-.contact-info p:hover {
+.contact-details p:hover {
     transform: scale(1.1);
 }
 
 /* Contact Button */
-.contact-button {
+.contact-btn {
     background: #ffd700;
     color: #222;
     font-size: 18px;
@@ -72,28 +72,28 @@
 }
 
 /* Button Hover Effect */
-.contact-button:hover {
+.contact-btn:hover {
     background: #e6c200;
     transform: scale(1.1);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Button Click Effect */
-.contact-button:active {
+.contact-btn:active {
     transform: scale(0.95);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .contact-container h2 {
+    .contact-section h2 {
         font-size: 2rem;
     }
 
-    .contact-container p {
+    .contact-section p {
         font-size: 1rem;
     }
 
-    .contact-button {
+    .contact-btn {
         font-size: 16px;
         padding: 10px 25px;
     }

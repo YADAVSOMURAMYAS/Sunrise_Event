@@ -1,7 +1,7 @@
 import React from "react";
 import "./MultiEvent4.css";
 import calendarImg from "../../assets/marriageHome4.png"; // Replace with actual image path
-
+import { Link } from 'react-router-dom';
 const MultiEvent4 = () => {
   return (
     <div className="personalize-container flex flex-row">
@@ -16,7 +16,15 @@ const MultiEvent4 = () => {
       <div className="image-section basis-3/5">
         <img src={calendarImg} alt="Calendar" className="calendar-image w-screen" />
         </div>
-      
+        <div className="button-container">
+        <div>
+          <Link to="/services">
+            <button>
+              Explore More Events 
+              <span className="arrow"> →</span> </button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
