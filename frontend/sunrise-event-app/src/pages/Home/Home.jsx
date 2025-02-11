@@ -1,44 +1,59 @@
-import React from 'react'
-import './Home.css'
-import Navbar from '../../components/Navbar/Navbar'
-import About from '../../components/About/About'
-import { AppContent } from '../../context/AppContext'
-import { useContext } from 'react'
+import React from 'react';
+import './Home.css';
+import Navbar from '../../components/Navbar/Navbar';
+import About from '../../components/About/About';
+import { AppContent } from '../../context/AppContext';
+import { useContext } from 'react';
 
-import VideoBackground from '../../components/VideoBackground/VideoBackground'
-import MultiEvent from '../../components/multiEvent/MultiEvent'
-import MultiEvent2 from '../../components/MultiEvent/MultiEvent2'
-import MultiEvent3 from '../../components/MultiEvent/MultiEvent3'
-import MultiEvent4 from '../../components/MultiEvent/MultiEvent4'
+import VideoBackground from '../../components/VideoBackground/VideoBackground';
+import MultiEvent from '../../components/multiEvent/MultiEvent';
+import MultiEvent2 from '../../components/MultiEvent/MultiEvent2';
+import MultiEvent3 from '../../components/MultiEvent/MultiEvent3';
+import MultiEvent4 from '../../components/MultiEvent/MultiEvent4';
 
-import Footer from '../../components/Footer/Footer'
+import Footer from '../../components/Footer/Footer';
+import { Link } from 'react-router-dom';
 
-import { Link } from'react-router-dom'
+import BookingSection from '../../components/BookingSection/BookingSection';
+import GallerySection from '../../components/GallerySection/GallerySection';
+import ContactSection from '../../components/ContactSection/ContactSection';
+
+import { FaWhatsapp } from 'react-icons/fa'; // Import WhatsApp icon
 
 const Home = () => {
-  const  {userData}=useContext(AppContent)
+  const { userData } = useContext(AppContent);
+
   return (
     <div>
-      <Navbar/>
-      <VideoBackground/>
-     <div> <About/> </div>
-     <MultiEvent/>
-     <MultiEvent2/>
-     <MultiEvent3/>
-     <MultiEvent4/>
-     <div className="button-container">
-  <div>
-  <Link to="/services">
-    <button>
-      Explore More Events <img src="frontend/sunrise-event-app/src/assets/white-arrow.png" alt="" />
-    </button>
-  </Link>
-  </div>
+      <Navbar />
+      <VideoBackground />
+      <div> <About /> </div>
+      <MultiEvent />
+      <MultiEvent2 />
+      <MultiEvent3 />
+      <MultiEvent4 />
+      
+      <div className="button-container">
+        <div>
+          <Link to="/services">
+            <button>
+              Explore More Events 
+              <span className="arrow"> →</span> </button>
+          </Link>
+        </div>
+      </div>
 
-</div>
-<Footer />
+      <BookingSection />
+      <GallerySection />
+      <ContactSection />
+      <Footer />
+
+      {/* Floating WhatsApp Button */}
+      <a href="https://wa.me/9879879874" target="_blank" rel="noopener noreferrer" className="whatsapp-button">
+        <FaWhatsapp className="whatsapp-icon" />
+      </a>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

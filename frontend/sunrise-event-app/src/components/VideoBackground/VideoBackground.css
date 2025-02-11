@@ -1,16 +1,102 @@
-.video {
-    
+/* Video Container */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Video Styling */
+.video-container video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+/* Dark Overlay Layer */
+.video-container::after {
+    content: "";
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(28, 12, 12, 0.63);
-    z-index: -1; /* Keeps it in the background */
+    background: rgba(0, 0, 0, 0.4); /* Slight black overlay */
+    z-index: 1;
 }
 
-.video video {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover; /* Ensures full coverage without distortion */
-    mix-blend-mode: multiply; /* Blends with background color */
+/* Overlay Content with Blurred Background */
+.video-overlay {
+    position: absolute;
+    top: 50%;
+    left: 5%; /* Align content to the left */
+    transform: translateY(-50%);
+    text-align: left;
+    color: #fff;
+    padding: 50px;
+    padding-top: 80px;
+    border-radius: 15px;
+    max-width: 600px; /* Limit width for readability */
+    z-index: 2;
+
+    /* Blurring Effect */
+    background: rgba(255, 255, 255, 0.15); /* Transparent white */
+    backdrop-filter: blur(10px); /* Apply blur */
+    -webkit-backdrop-filter: blur(10px); /* Ensure compatibility */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Soft shadow */
+}
+
+/* Heading */
+.video-overlay h1 {
+    font-size: 4rem; /* Increase text size */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Subtext */
+.video-overlay p {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+
+/* Book Now Button */
+.book-now-button {
+    background: #ffcc00;
+    color: #000;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+}
+
+/* Button Hover Effect */
+.book-now-button:hover {
+    background: #ffb300;
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .video-overlay {
+        left: 5%;
+        max-width: 90%;
+        padding: 30px;
+    }
+
+    .video-overlay h1 {
+        font-size: 2.5rem;
+    }
+
+    .video-overlay p {
+        font-size: 1.3rem;
+    }
+
+    .book-now-button {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
 }

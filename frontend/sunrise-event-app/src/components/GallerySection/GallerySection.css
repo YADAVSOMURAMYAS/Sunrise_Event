@@ -1,0 +1,132 @@
+/* --- Gallery Section Styles --- */
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #e84c4c, #59d388); /* Gold-Black Gradient */
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    margin: 50px auto;
+    max-width: 90%;
+    height: 90vh;
+    transition: transform 0.3s ease-in-out;
+    
+}
+
+/* Hover Effect */
+.gallery-container:hover {
+    transform: scale(1.03);
+}
+
+/* Content Styling */
+.gallery-content {
+    max-width: 800px;
+}
+
+.gallery-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.gallery-content p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+/* --- Gallery Images --- */
+.gallery-images {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Increased spacing between images */
+    margin-bottom: 30px;
+}
+
+.gallery-images img {
+    width: 30%;
+    height: 220px; /* Slightly increased height */
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Image Hover Effect */
+.gallery-images img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Gallery Button Wrapper --- */
+.gallery-button-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+/* --- Fixed Gallery Button --- */
+.gallery-button {
+    background: #B8860B; /* Gold color */
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 14px 40px; /* More horizontal padding for better width */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px; /* Space between text and arrow */
+    text-align: center;
+    white-space: nowrap; /* Prevents text from wrapping */
+    min-width: 220px; /* Ensures consistent width */
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Button Hover Effect --- */
+.gallery-button:hover {
+    background: #A7790B; /* Slightly darker gold */
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Arrow Styling --- */
+.gallery-button .arrow {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* --- Button Click Effect --- */
+.gallery-button:active {
+    transform: scale(0.95);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .gallery-content h2 {
+        font-size: 2rem;
+    }
+    
+    .gallery-content p {
+        font-size: 1rem;
+    }
+
+    .gallery-images {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .gallery-images img {
+        width: 80%;
+        height: auto;
+    }
+
+    .gallery-button {
+        font-size: 16px;
+        padding: 12px 30px;
+    }
+}
