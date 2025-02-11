@@ -17,6 +17,7 @@ import GallerySection from '../../components/GallerySection/GallerySection';
 import ContactSection from '../../components/ContactSection/ContactSection';
 
 import { FaWhatsapp } from 'react-icons/fa'; // Import WhatsApp icon
+import Button from '../../components/Button/Button';
 
 const Home = () => {
   const { userData } = useContext(AppContent);
@@ -30,6 +31,7 @@ const Home = () => {
       <MultiEvent2 />
       <MultiEvent3 />
       <MultiEvent4 />
+      <Button/>
       
       <BookingSection />
       <GallerySection />
