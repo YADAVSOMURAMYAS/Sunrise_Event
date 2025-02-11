@@ -13,6 +13,12 @@ app.use(cookieParser());
 const allowedOrigins = ['http://localhost:5174', 'http://localhost:5173']
 app.use(cors({origin:allowedOrigins ,credentials: true}));
 connectDB();
+app.use(cors({
+    origin: "https://deploy-mern-ai-ira.vercel.app",
+    methods: ["POST", "GET"],
+    credentials: true
+}));
+
 app.listen(PORT,() => {
     console.log(`Server is running on port ${PORT}`);
 });
