@@ -14,6 +14,7 @@ import EmailVerify from './pages/EmailVerify/EmailVerify'
 import ResetPassword from './pages/ResetPassWord/ResetPassWord'
 import PageNotFound from './pages/PageNotFound/PageNotFound'
 
+import MultiStepForm from './pages/MultiStepForm/MultiStepForm'
 function App() {
     
 
@@ -32,6 +33,7 @@ function App() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/email-verify" element={<EmailVerify />} />
       <Route path="/reset-password" element={<ResetPassword />}/>
+      <Route path="/event-booking-form" element={<MultiStepForm />} />
       <Route path='*' element={<PageNotFound/>} />
     </Routes>
   </div>

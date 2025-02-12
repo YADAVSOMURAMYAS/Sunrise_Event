@@ -12,13 +12,12 @@ import MultiEvent3 from '../../components/MultiEvent/MultiEvent3';
 import MultiEvent4 from '../../components/MultiEvent/MultiEvent4';
 
 import Footer from '../../components/Footer/Footer';
-import { Link } from 'react-router-dom';
-
 import BookingSection from '../../components/BookingSection/BookingSection';
 import GallerySection from '../../components/GallerySection/GallerySection';
 import ContactSection from '../../components/ContactSection/ContactSection';
 
 import { FaWhatsapp } from 'react-icons/fa'; // Import WhatsApp icon
+import Button from '../../components/Button/Button';
 
 const Home = () => {
   const { userData } = useContext(AppContent);
@@ -27,29 +26,25 @@ const Home = () => {
     <div>
       <Navbar />
       <VideoBackground />
-      <div> <About /> </div>
+      <About /> 
       <MultiEvent />
       <MultiEvent2 />
       <MultiEvent3 />
       <MultiEvent4 />
+      <Button/>
       
-      <div className="button-container">
-        <div>
-          <Link to="/services">
-            <button>
-              Explore More Events 
-              <span className="arrow"> →</span> </button>
-          </Link>
-        </div>
-      </div>
-
       <BookingSection />
       <GallerySection />
       <ContactSection />
       <Footer />
 
       {/* Floating WhatsApp Button */}
-      <a href="https://wa.me/9879879874" target="_blank" rel="noopener noreferrer" className="whatsapp-button">
+      <a 
+        href="https://wa.me/919879879874"  // Ensure country code is included
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="whatsapp-button"
+      >
         <FaWhatsapp className="whatsapp-icon" />
       </a>
     </div>

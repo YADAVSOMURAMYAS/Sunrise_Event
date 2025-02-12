@@ -12,7 +12,7 @@ const BookingSection = () => {
         </p>
         <div className="button-wrapper">
           <Link to="/booking">
-            <button className="booking-button">Book Now →</button>
+            <button className="booking-button button">Book Now →</button>
           </Link>
         </div>
         <div className="booking-features">
