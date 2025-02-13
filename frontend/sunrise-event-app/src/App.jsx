@@ -10,7 +10,7 @@ import Contact from './pages/Contact/Contact'
 import Booking from './pages/Booking/Booking'
 import { ToastContainer} from 'react-toastify';
 import EmailVerify from './pages/EmailVerify/EmailVerify'
-
+import MultipageForm from "./pages/MultipageForm/MultipageForm";
 import ResetPassword from './pages/ResetPassWord/ResetPassWord'
 import PageNotFound from './pages/PageNotFound/PageNotFound'
 
@@ -32,6 +32,7 @@ function App() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/email-verify" element={<EmailVerify />} />
       <Route path="/reset-password" element={<ResetPassword />}/>
+      <Route path="/multipageform" element={<MultipageForm />} />
       <Route path='*' element={<PageNotFound/>} />
     </Routes>
   </div>
