@@ -1,5 +1,5 @@
 import React, { useState, useRef, useContext } from "react";
-import "./ResetPassword.css";
+import "./ResetPassWord.css";
 import logo from "../../assets/logo.png";
 import Button from "@mui/material/Button";
 import { AppContent } from "../../context/AppContext";
