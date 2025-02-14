@@ -7,9 +7,7 @@
   "type": "commonjs",
   "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "vercel-build": "npm install && npm run build",
-    "build": "echo 'No build step required'"
+    "start": "node server.js"
   }
 ,
   "dependencies": {
