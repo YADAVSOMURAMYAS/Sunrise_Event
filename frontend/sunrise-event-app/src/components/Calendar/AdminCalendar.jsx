@@ -1,42 +1,60 @@
-import React, { useEffect, useState } from 'react';
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import './AdminCalendar.css'; // Import the CSS file
+import React, { useRef } from "react";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import listPlugin from "@fullcalendar/list";
+import interactionPlugin from "@fullcalendar/interaction";
 
-function AdminCalendar() {
-  const [events, setEvents] = useState([]);
+const AdminCalendar = ({ events, onEventClick }) => {
+  const calendarRef = useRef(null);
 
-  useEffect(() => {
-    fetch('/api/dates')
-      .then(response => response.json())
-      .then(data => {
-        // Assuming data is an array of dates with fields 'title' and 'start'
-        const formattedEvents = data.map(date => ({
-          title: date.title,
-          date: new Date(date.start),
-        }));
-        setEvents(formattedEvents);
-      })
-      .catch(error => console.error('Error fetching dates:', error));
-  }, []);
+  // Navigate to a specific date
+  const goToDate = (event) => {
+    event.preventDefault();
+    const dateInput = event.target.date.value;
+    if (calendarRef.current && dateInput) {
+      const calendarApi = calendarRef.current.getApi();
+      calendarApi.gotoDate(dateInput);
+    }
+  };
 
   return (
-    <div style={{ width: '100%', height: '100%' }}>
+    <div>
+      {/* Date Picker for Navigation */}
+      <form onSubmit={goToDate} className="mb-4 flex items-center space-x-2">
+        <label className="text-gray-700 font-medium">Go to Date:</label>
+        <input
+          type="date"
+          name="date"
+          className="border p-2 rounded"
+          required
+        />
+        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
+          Go
+        </button>
+      </form>
+
+      {/* FullCalendar Component */}
       <FullCalendar
-        plugins={[dayGridPlugin]}
+        ref={calendarRef}
+        plugins={[dayGridPlugin, listPlugin, interactionPlugin]}
         initialView="dayGridMonth"
-        events={events}
-        height="auto" // Automatically adjust height
         headerToolbar={{
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,dayGridWeek,dayGridDay', // Add views if needed
+          left: "prev,next today",
+          center: "title",
+          right: "dayGridMonth,timeGridWeek,listMonth",
         }}
-        eventColor="#3788d8" // Custom event color
-        eventTextColor="#fff" // White text for events
+        events={events}
+        eventClick={(info) => onEventClick(info.event.extendedProps)}
+        eventContent={(eventInfo) => (
+          <div className="cursor-pointer">
+            <b>{eventInfo.event.title}</b>
+            <p className="text-xs">{eventInfo.event.extendedProps.location}</p>
+          </div>
+        )}
       />
     </div>
   );
-}
+};
 
 export default AdminCalendar;

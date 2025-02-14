@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { generateEventPDF } from "../PDFGenerator";
+import { useNavigate } from "react-router-dom";
 
 const Review = ({ formData, prevStep, handleSubmit }) => {
   const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   const handleFinalSubmit = async () => {
     try {
-      await handleSubmit(); // Wait for submission to complete
-      setSubmitted(true);   // Now update state
+      await handleSubmit(); // Wait for the form submission
+      localStorage.setItem("submittedEventData", JSON.stringify(formData)); // Store data in localStorage
+      setSubmitted(true);
+      navigate("/confirmation"); // Redirect to confirmation page
     } catch (error) {
       console.error("Submission failed:", error);
     }
@@ -46,7 +49,7 @@ const Review = ({ formData, prevStep, handleSubmit }) => {
         {!submitted ? (
           <button className="btn btn-success" onClick={handleFinalSubmit}>Submit</button>
         ) : (
-          <button className="btn btn-primary" onClick={() => generateEventPDF(formData)}>Download PDF</button>
+          <p className="text-green-600 font-bold">Submission successful! Redirecting...</p>
         )}
       </div>
     </div>

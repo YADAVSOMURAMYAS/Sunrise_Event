@@ -14,6 +14,7 @@ import ResetPassword from './pages/ResetPassWord/ResetPassWord';
 import PageNotFound from './pages/PageNotFound/PageNotFound';
 import Admin from './pages/Admin/Admin';
 import ProtectedRoute from './components/ProtectedRoute';
+import Confirmation from './components/Confirmation/Confirmation';
 
 function App() {
     return (
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/email-verify" element={<EmailVerify />} />
                 <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/multipageform" element={<MultipageForm />} />
+                <Route path="/confirmation" element={<Confirmation/>} />
 
                 {/* ✅ Protected Admin Route */}
                 <Route path="/admin" element={
