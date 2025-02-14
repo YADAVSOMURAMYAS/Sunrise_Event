@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Wedding Decoration",
+        "description": "Exquisite traditional decor with floral elegance and grandeur.",
+        "price": "To be updated",
+        "image": "https://i.pinimg.com/originals/b6/a2/32/b6a23203e0180df28d2edc5b3c2cbb72.jpg",
+        "features": [
+            "Mandap setup",
+            "Floral garlands",
+            "Traditional rangoli",
+            "Grand entrance decor",
+            "Custom stage backdrop",
+            "Live dhol performance"
+        ],
+        "duration": "8-10 hours",
+        "availability": "Available on request"
+    },
+    {
+        "name": "Reception Setup",
+        "description": "Lavish and royal reception setup with intricate Indian artistry.",
+        "price": "To be updated",
+        "image": "https://th.bing.com/th/id/OIP.kd67Ig44O07mRRzr3UTSCgHaKR?w=1024&h=1421&rs=1&pid=ImgDetMain",
+        "features": [
+            "Grand seating",
+            "Floral centerpieces",
+            "Shimmering drapes",
+            "Live classical music",
+            "Decorative chandeliers",
+            "Custom photobooth"
+        ],
+        "duration": "6-8 hours",
+        "availability": "Available on request"
+    },
+    {
+        "name": "Sangeet Decoration",
+        "description": "A colorful and vibrant decor setup to amplify the joy of Sangeet night.",
+        "price": "To be updated",
+        "image": "https://i.pinimg.com/736x/79/80/86/798086e0f72b1184d15c87a5d903c1ab.jpg",
+        "features": [
+            "LED dance floor",
+            "Bollywood-themed decor",
+            "Live DJ setup",
+            "Folk dance performers",
+            "Vibrant seating",
+            "Stage backdrop"
+        ],
+        "duration": "5-7 hours",
+        "availability": "Available on request"
+    },
+    {
+        "name": "Haldi Decoration",
+        "description": "A joyous and picturesque Haldi decor with traditional Indian elements.",
+        "price": "To be updated",
+        "image": "https://image.wedmegood.com/resized-nw/1300X/wp-content/uploads/2022/01/256270389_1850420051795317_4294796625951313819_n.jpg",
+        "features": [
+            "Marigold & mango leaf decor",
+            "Turmeric-themed backdrops",
+            "Floral swings",
+            "Traditional music",
+            "Handcrafted umbrellas",
+            "Vibrant cushions"
+        ],
+        "duration": "4-6 hours",
+        "availability": "Available on request"
+    },
+    {
+        "name": "Rental Furniture & Sitting Arrangement",
+        "description": "Premium furniture rentals and elegant seating arrangements for all events.",
+        "price": "To be updated",
+        "image": "https://image.wedmegood.com/resized-nw/1300X/wp-content/uploads/2023/05/07-BARAAT-52-DPK04068.jpg",
+        "features": [
+            "Luxury sofas",
+            "Dining tables",
+            "Lounge chairs",
+            "Stage seating",
+            "Themed seating options",
+            "Outdoor furniture"
+        ],
+        "duration": "Customizable",
+        "availability": "Available on request"
+    }
+]
