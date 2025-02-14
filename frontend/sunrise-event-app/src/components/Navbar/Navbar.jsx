@@ -7,7 +7,7 @@ import { AppContent } from "../../context/AppContext";
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { userData, backendUrl, setUserData, setIsLoggedin } = useContext(AppContent);
+  const { getUserData,userData, backendUrl, setUserData, setIsLoggedin } = useContext(AppContent);
   const navigate = useNavigate();
   const sendVerificationOtp=async()=>{
     try{
@@ -37,7 +37,17 @@ function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  const handleRole = async () => {
+    await getUserData();  // Ensure userData is up to date
 
+    if (userData?.role === "admin") {
+      navigate("/admin");
+    } else if (userData?.role === "user") {
+      navigate("/");
+    } else {
+      toast.error("User role not found.");
+    }
+  };
   const logout = async () => { // ✅ Corrected syntax
     try {
       axios.defaults.withCredentials = true;
@@ -72,7 +82,9 @@ function Navbar() {
           style={{ color: "#E6B800", fontSize: "18px", fontWeight: "bold" }} // ✅ Fixed fontWeight
           className="group"
         >
-          {userData.name}
+          <button onClick={handleRole} className="role-button">
+            {userData.name}
+          </button>
           <div className="absolute hidden group-hover:block top-5 right-6 z-10 text-black rounded pt-10">
             <ul className="list-none m-0 p-2 bg-gray-100 text-sm">
               {!userData.isAccountVerified && (
