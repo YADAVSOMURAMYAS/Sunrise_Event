@@ -1,0 +1,40 @@
+/* AdminCalendar.css */
+.fc {
+    font-family: Arial, sans-serif; /* Use a clean font */
+  }
+  
+  .fc-header-toolbar {
+    margin-bottom: 1em; /* Add spacing below the toolbar */
+  }
+  
+  /* Override FullCalendar button styles */
+  .fc .fc-button {
+    background-color: #E6B800 !important; /* Yellow color for buttons */
+    border: none !important; /* Remove default border */
+    color: black !important; /* Text color */
+    padding: 8px 12px !important;
+    margin-left: 4px !important;; /* Padding for better appearance */
+    border-radius: 4px !important; /* Rounded corners */
+    cursor: pointer !important; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease !important; /* Smooth transition for hover effect */
+  }
+  
+  /* Hover effect for buttons */
+  .fc .fc-button:hover {
+    background-color: #f4c301 !important; /* Darker shade of yellow on hover */
+  }
+  
+  /* Active state for buttons (when clicked) */
+  .fc .fc-button:active {
+    background-color: #cc9f00 !important; /* Even darker shade for active state */
+  }
+  
+  /* Style for day grid events */
+  .fc-daygrid-event {
+    border-radius: 4px; /* Rounded corners for events */
+  }
+  
+  /* Style for day numbers in the calendar */
+  .fc-daygrid-day-number {
+    color: #333; /* Darker text for day numbers */
+  }

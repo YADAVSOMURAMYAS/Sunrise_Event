@@ -78,23 +78,30 @@ function Navbar() {
       <a href="/contact">Contact</a>
 
       {userData ? (
-        <div
-          style={{ color: "#E6B800", fontSize: "18px", fontWeight: "bold" }} // ✅ Fixed fontWeight
-          className="group"
-        >
-          <button onClick={handleRole} className="role-button">
-            {userData.name}
-          </button>
-          <div className="absolute hidden group-hover:block top-5 right-6 z-10 text-black rounded pt-10">
-            <ul className="list-none m-0 p-2 bg-gray-100 text-sm">
+  <div
+    style={{ color: "#E6B800", fontSize: "18px", fontWeight: "bold" }}
+    className="group relative"
+  >
+    <button
+      onClick={handleRole}
+      className="bg-transparent border-none cursor-pointer focus:outline-none"
+      style={{ color: "#E6B800", fontSize: "18px", fontWeight: "bold" }}
+    >
+      {userData.name}
+    </button>
+
+ 
+
+          <div className="absolute hidden group-hover:block top-1 right-0 z-10 text-black rounded pt-10">
+            <ul className="list-none m-0 p-2 w-3xs bg-gray-100 text-sm">
               {!userData.isAccountVerified && (
-                <li onClick={sendVerificationOtp} className="py-1 px-2 hover:bg-gray-200 cursor-pointer">
+                <li onClick={sendVerificationOtp} className="py-1 px-2 hover:text-green-600 hover:bg-gray-200 cursor-pointer">
                   Verify Email
                 </li>
               )}
               <li
                 onClick={logout}
-                className="py-1 px-2 hover:bg-gray-200 hover:text-red-500 cursor-pointer pr-10"
+                className="py-1 px-2 hover:bg-gray-200 hover:text-red-600 cursor-pointer"
               >
                 Logout
               </li>
