@@ -13,7 +13,7 @@ const Booking = () => {
       <div className="booking-container">
         <h1>Book Your Event</h1>
         <p>Plan your perfect event with us! Click the button below to proceed.</p>
-        <button className="booking-button" onClick={() => navigate("/event-booking-form")}>
+        <button className="booking-button" onClick={() => navigate("/multipageform")}>
           Proceed to Booking
         </button>
       </div>

@@ -6,7 +6,8 @@ const mongoose = require("mongoose");
 
 const authRouter = require("./routes/authRoutes.js");
 const userRouter = require("./routes/userRoutes.js");
-const formRouter = require("./routes/formRoutes.js"); // Import form routes
+const eventRoutes = require('./routes/eventRoutes');
+// Import form routes
 
 dotenv.config();
 const app = express();
@@ -15,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: ["http://localhost:5174", "http://localhost:5173"], credentials: true }));
+app.use(cors({ origin: ["http://localhost:5174", "http://localhost:5173","http://localhost:5175"], credentials: true }));
 
 // Connect to MongoDB
 mongoose
@@ -29,7 +30,7 @@ mongoose
 // Routes
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
-app.use("/api/form", formRouter); // Form submission routes
+app.use('/api/events', eventRoutes); // Form submission routes
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
