@@ -1,0 +1,194 @@
+[
+    {
+        "name": "Wedding Decoration",
+        "description": "Exquisite traditional decor with floral elegance and grandeur.",
+        "price": "To be updated",
+        "image": "https://i.pinimg.com/originals/b6/a2/32/b6a23203e0180df28d2edc5b3c2cbb72.jpg",
+        "features": [
+            "Mandap setup",
+            "Floral garlands",
+            "Traditional rangoli",
+            "Grand entrance decor",
+            "Custom stage backdrop",
+            "Live dhol performance"
+        ],
+        "duration": "8-10 hours",
+        "availability": "Available on request"
+    },
+    {
+        "name": "Reception Setup",
+        "description": "Lavish and royal reception setup with intricate Indian artistry.",
+        "price": "To be updated",
+        "image": "https://th.bing.com/th/id/OIP.kd67Ig44O07mRRzr3UTSCgHaKR?w=1024&h=1421&rs=1&pid=ImgDetMain",
+        "features": [
+            "Grand seating",
+            "Floral centerpieces",
+            "Shimmering drapes",
+            "Live classical music",
+            "Decorative chandeliers",
+            "Custom photobooth"
+        ],
+        "duration": "6-8 hours",
+        "availability": "Available on request"
+    },
+    {
+        "name": "Sangeet Decoration",
+        "description": "A colorful and vibrant decor setup to amplify the joy of Sangeet night.",
+        "price": "To be updated",
+        "image": "https://i.pinimg.com/736x/79/80/86/798086e0f72b1184d15c87a5d903c1ab.jpg",
+        "features": [
+            "LED dance floor",
+            "Bollywood-themed decor",
+            "Live DJ setup",
+            "Folk dance performers",
+            "Vibrant seating",
+            "Stage backdrop"
+        ],
+        "duration": "5-7 hours",
+        "availability": "Available on request"
+    },
+    {
+        "name": "Haldi Decoration",
+        "description": "A joyous and picturesque Haldi decor with traditional Indian elements.",
+        "price": "To be updated",
+        "image": "https://image.wedmegood.com/resized-nw/1300X/wp-content/uploads/2022/01/256270389_1850420051795317_4294796625951313819_n.jpg",
+        "features": [
+            "Marigold & mango leaf decor",
+            "Turmeric-themed backdrops",
+            "Floral swings",
+            "Traditional music",
+            "Handcrafted umbrellas",
+            "Vibrant cushions"
+        ],
+        "duration": "4-6 hours",
+        "availability": "Available on request"
+    },
+    {
+        "name": "Rental Furniture & Sitting Arrangement",
+        "description": "Premium furniture rentals and elegant seating arrangements for all events.",
+        "price": "To be updated",
+        "image": "https://image.wedmegood.com/resized-nw/1300X/wp-content/uploads/2023/05/07-BARAAT-52-DPK04068.jpg",
+        "features": [
+            "Luxury sofas",
+            "Dining tables",
+            "Lounge chairs",
+            "Stage seating",
+            "Themed seating options",
+            "Outdoor furniture"
+        ],
+        "duration": "Customizable",
+        "availability": "Available on request"
+    },
+    {
+        "name": "Birthday Celebration",
+        "description": "Themed birthday party setups with vibrant decorations and entertainment.",
+        "price": "To be updated",
+        "image": "https://i.pinimg.com/originals/78/5c/93/785c9308f71c41d5e3f84fcdb0388dd1.jpg",
+        "features": [
+            "Balloon decor",
+            "Theme-based cake table setup",
+            "LED lighting",
+            "Live entertainment (magicians, clowns, etc.)",
+            "Customized photo booth",
+            "Return gift station"
+        ],
+        "duration": "3-5 hours",
+        "availability": "Available on request"
+    },
+    {
+        "name": "Baby Shower Decoration",
+        "description": "Elegant and pastel-themed decorations to celebrate the joy of parenthood.",
+        "price": "To be updated",
+        "image": "https://i.pinimg.com/originals/d5/b4/5b/d5b45b994c796152d54e3dcf6c514b79.jpg",
+        "features": [
+            "Pastel balloon garlands",
+            "Floral arrangements",
+            "Baby name reveal setup",
+            "Theme-based seating",
+            "Interactive games & props",
+            "Photo backdrop"
+        ],
+        "duration": "3-5 hours",
+        "availability": "Available on request"
+    },
+    {
+        "name": "Anniversary Celebration",
+        "description": "Romantic and classy anniversary setup to cherish special moments.",
+        "price": "To be updated",
+        "image": "https://i.pinimg.com/originals/48/80/1f/48801fd4dd3bc07a3a39288fc2b612dc.jpg",
+        "features": [
+            "Candlelight dinner setup",
+            "Romantic floral decorations",
+            "Live music performance",
+            "Customized couple photobooth",
+            "Luxury seating arrangement",
+            "Fairy lights & mood lighting"
+        ],
+        "duration": "4-6 hours",
+        "availability": "Available on request"
+    },
+    {
+        "name": "Corporate Event Setup",
+        "description": "Professional and sophisticated event setup for corporate gatherings.",
+        "price": "To be updated",
+        "image": "https://i.pinimg.com/originals/0c/82/4b/0c824b9a2c84b6d504749ce733f7b194.jpg",
+        "features": [
+            "Conference & seminar stage setup",
+            "Branded backdrops",
+            "Premium seating",
+            "AV setup & microphones",
+            "Networking lounge",
+            "Food & beverage arrangements"
+        ],
+        "duration": "Customizable",
+        "availability": "Available on request"
+    },
+    {
+        "name": "Engagement Ceremony",
+        "description": "A sophisticated engagement setup to celebrate the beginning of a beautiful journey.",
+        "price": "To be updated",
+        "image": "https://i.pinimg.com/originals/1e/35/4a/1e354a0a118b8b5ebc64c32f1dd85d09.jpg",
+        "features": [
+            "Elegant floral stage decor",
+            "Grand ring exchange setup",
+            "Themed seating arrangement",
+            "Romantic lighting",
+            "Live music performance",
+            "Custom photo backdrop"
+        ],
+        "duration": "5-7 hours",
+        "availability": "Available on request"
+    },
+    {
+        "name": "Mehendi Ceremony",
+        "description": "A vibrant and joyful Mehendi celebration with colorful decor and traditional elements.",
+        "price": "To be updated",
+        "image": "https://i.pinimg.com/originals/79/7c/7f/797c7f79e378329083e1c1ed3cb32942.jpg",
+        "features": [
+            "Bright & colorful canopy decor",
+            "Themed Mehendi seating",
+            "Live folk music and dance",
+            "Floral jhoola (swing) for bride",
+            "DIY Mehendi station",
+            "Traditional props & backdrops"
+        ],
+        "duration": "4-6 hours",
+        "availability": "Available on request"
+    },
+    {
+        "name": "Custom Celebration",
+        "description": "Tailor-made decoration services to bring your unique event vision to life.",
+        "price": "To be updated",
+        "image": "https://i.pinimg.com/originals/8e/67/37/8e67379d0ae27c6c92dfcf6c9eb03f8e.jpg",
+        "features": [
+            "Personalized decor themes",
+            "Custom floral arrangements",
+            "Unique backdrop setups",
+            "Custom lighting & effects",
+            "Special entertainment options",
+            "Flexible duration & availability"
+        ],
+        "duration": "Customizable",
+        "availability": "Available on request"
+    }
+]
