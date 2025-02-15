@@ -1,15 +1,7 @@
 import React from 'react';
-import './Contact.css';
 import Navbar from '../../components/Navbar/Navbar';
-import mail_icon from '../../assets/mail-icon.png';
-import phone_icon from '../../assets/phone-icon.png';
-import location_icon from '../../assets/location-icon.png';
-import msg_icon from '../../assets/msg-icon.png';
-import white_arrow from '../../assets/white-arrow.png';
-import Title from '../../components/Title/Title';
-import logo from '../../assets/logo.png';
 import Footer from '../../components/Footer/Footer';
-
+import logo from '../../assets/logo.png';
 
 const Contact = () => {
   const [result, setResult] = React.useState("");
@@ -37,49 +29,67 @@ const Contact = () => {
   };
 
   return (
-    <div className='contact-container'>
+    <div className="bg-[#fcc774] min-h-screen flex flex-col pt-10">
       <Navbar />
       
-      <div className="title">
-      <p>CONTACT US</p>
-        <div className="subheading"><img src={logo} alt="" /><h2>Let's Plan Your Dream Event</h2></div>
+      {/* Page Title */}
+      <div className="text-center my-10">
+        <p className="text-xl font-semibold text-black">CONTACT US</p>
+        <div className="flex justify-center items-center gap-4">
+          <img src={logo} alt="Logo" className="h-20 w-20" />
+          <h2 className="text-3xl font-bold text-black">Let's Plan Your Dream Event</h2>
+        </div>
       </div>
 
-      <div className="contact">
-        <div className="contact-column">
-          <h3>Get in Touch with Us <img src={msg_icon} alt="Message Icon" /></h3>
-          <p>
-            Planning a wedding or an event? Contact us for personalized event management services, including:
-          </p>
-          <ul>
+      {/* Contact Section */}
+      <div className="max-w-6xl mx-auto flex flex-wrap bg-white shadow-xl rounded-lg p-10">
+        {/* Left Column (Contact Details) */}
+        <div className="w-full md:w-1/2 text-gray-700">
+          <h3 className="text-2xl font-bold text-black flex items-center gap-2">
+            Get in Touch with Us <span>📩</span>
+          </h3>
+          <p className="mt-3 text-lg">Planning a wedding or an event? Contact us for personalized event management services, including:</p>
+          <ul className="mt-4 space-y-2 text-lg">
             <li>✨ Wedding Decoration</li>
             <li>🎉 Reception Setup</li>
             <li>💃 Sangeet & Haldi Decoration</li>
             <li>🪑 Rental Furniture & Sitting Arrangements</li>
           </ul>
-          <p>We ensure an unforgettable experience tailored to your needs.</p>
-          <ul>
-            <li><img src={mail_icon} alt="Mail Icon" /> sunriseevents@gmail.com</li>
-            <li><img src={phone_icon} alt="Phone Icon" /> +91 98878 29699</li>
-            <li><img src={location_icon} alt="Location Icon" /> BlackBunny campus, beside highfield ascot mall building, VIP Road, opp. Palm Avenue, Surat ,Gujarat-395007</li>
+          <p className="mt-4">We ensure an unforgettable experience tailored to your needs.</p>
+          <ul className="mt-5 space-y-3">
+            <li className="flex items-center gap-3"><span>📧</span> sunriseevents@gmail.com</li>
+            <li className="flex items-center gap-3"><span>📞</span> +91 98878 29699</li>
+            <li className="flex items-center gap-3">
+              <span>📍</span> BlackBunny campus, beside Highfield Ascot Mall, VIP Road, Surat, Gujarat-395007
+            </li>
           </ul>
         </div>
-        <div className="contact-column">
-          <form onSubmit={onSubmit}>
-            <label>Your Name</label>
-            <input type="text" name="name" placeholder="Enter your name" required />
-            <label>Phone Number</label>
-            <input type="tel" name="phone" placeholder="Enter your mobile number" required />
-            <label>Message</label>
-            <textarea name="message" rows="6" placeholder="Tell us about your event!" required></textarea>
-            <button type="submit" className="btn dark-btn">
-              Submit Now <img src={white_arrow} alt="Arrow Icon" />
+
+        {/* Right Column (Contact Form) */}
+        <div className="w-full md:w-1/2 mt-10 md:mt-0">
+          <form onSubmit={onSubmit} className="bg-white p-8 shadow-lg rounded-lg">
+            <label className="block font-semibold text-gray-700">Your Name</label>
+            <input type="text" name="name" placeholder="Enter your name" required 
+              className="w-full p-3 border border-gray-300 rounded-md mt-1 focus:ring-2 focus:ring-orange-400"/>
+
+            <label className="block mt-4 font-semibold text-gray-700">Phone Number</label>
+            <input type="tel" name="phone" placeholder="Enter your mobile number" required 
+              className="w-full p-3 border border-gray-300 rounded-md mt-1 focus:ring-2 focus:ring-orange-400"/>
+
+            <label className="block mt-4 font-semibold text-gray-700">Message</label>
+            <textarea name="message" rows="6" placeholder="Tell us about your event!" required 
+              className="w-full p-3 border border-gray-300 rounded-md mt-1 focus:ring-2 focus:ring-orange-400 resize-none"></textarea>
+
+            <button type="submit" className="w-full mt-5 bg-orange-500 text-white font-bold py-3 rounded-lg hover:bg-orange-600 transition-all">
+              Submit Now →
             </button>
+
+            <span className="block mt-3 text-green-600 font-semibold">{result}</span>
           </form>
-          <span className='result'>{result}</span>
         </div>
       </div>
-      <Footer/>
+
+      <Footer />
     </div>
   );
 };
