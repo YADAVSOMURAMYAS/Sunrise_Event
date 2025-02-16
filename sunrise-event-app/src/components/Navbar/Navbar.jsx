@@ -2,13 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { AppContent } from "../../context/AppContext";
 import { FiMenu, FiX } from "react-icons/fi";
+import { AppContent } from "../../context/AppContext";
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
   const { getUserData, userData, backendUrl, setUserData, setIsLoggedin } = useContext(AppContent);
   const navigate = useNavigate();
 
@@ -16,6 +16,7 @@ function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -36,21 +37,10 @@ function Navbar() {
     }
   };
 
-  const handleRole = async () => {
-    await getUserData();
-    if (userData?.role === "admin") {
-      navigate("/admin");
-    } else if (userData?.role === "user") {
-      navigate("/");
-    } else {
-      toast.error("User role not found.");
-    }
-  };
-
   const logout = async () => {
     try {
       axios.defaults.withCredentials = true;
-      const { data } = await axios.post(`${backendUrl}/api/auth/logout`);
+      const { data } = await axios.post(backendUrl + "/api/auth/logout");
       if (data.success) {
         setUserData(null);
         setIsLoggedin(false);
@@ -72,57 +62,47 @@ function Navbar() {
       } px-6 flex justify-between items-center`}
     >
       {/* Logo */}
-      <div className="text-3xl font-bold text-white tracking-wider cursor-pointer" onClick={() => navigate("/")}> 
+      <div className="text-3xl font-bold text-white tracking-wider cursor-pointer" onClick={() => navigate("/")}>
         <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">Sunrise</span> Events
       </div>
 
-      {/* Navigation Links */}
+      {/* Desktop Navigation */}
       <div className="hidden md:flex gap-8 items-center">
         {["Home", "Gallery", "Services", "Booking", "Contact"].map((item, index) => (
-          <Link key={index} to={item === "Home" ? "/" : `/${item.toLowerCase()}`} className="text-white text-lg font-medium tracking-wide hover:text-yellow-500">
+          <Link
+            key={index}
+            to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+            className="text-white text-lg font-medium tracking-wide relative group hover:text-yellow-500 transition-all"
+          >
             {item}
+            <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 group-hover:w-full transition-all duration-300"></span>
           </Link>
         ))}
 
-        {/* User Dropdown */}
-        {userData ? (
+        {/* User Profile (Desktop) */}
+        {userData && (
           <div className="relative">
-            <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="w-10 h-10 bg-yellow-500 text-black font-bold rounded-full flex items-center justify-center text-xl"
-            >
-              {userData.name.charAt(0).toUpperCase()}
+            <button onClick={() => setShowDropdown(!showDropdown)} className="w-10 h-10 rounded-full bg-yellow-500 text-black text-lg font-bold flex items-center justify-center">
+              {userData.name[0].toUpperCase()}
             </button>
-            {dropdownOpen && (
-              <div className="absolute right-0 mt-2 w-40 bg-[#1a1a2e] text-white rounded-lg shadow-lg">
+            {showDropdown && (
+              <div className="absolute right-0 mt-2 w-40 bg-white text-black shadow-lg rounded-md py-2">
                 {!userData.isAccountVerified && (
-                  <button
-                    onClick={sendVerificationOtp}
-                    className="block w-full text-left px-4 py-2 hover:bg-yellow-500"
-                  >
-                    Verify Email
-                  </button>
+                  <button onClick={sendVerificationOtp} className="block w-full text-left px-4 py-2 hover:bg-gray-200">Verify Email</button>
                 )}
-                <button
-                  onClick={logout}
-                  className="block w-full text-left px-4 py-2 hover:bg-red-600"
-                >
-                  Logout
-                </button>
+                <button onClick={logout} className="block w-full text-left px-4 py-2 hover:bg-gray-200">Logout</button>
               </div>
             )}
           </div>
-        ) : (
-          <Link
-            to="/login"
-            className="text-white text-lg border-2 border-yellow-400 px-5 py-2 rounded-full hover:bg-yellow-400 hover:text-black transition-all"
-          >
-            Log In
-          </Link>
+        )}
+
+        {/* Log In Button (Desktop) */}
+        {!userData && (
+          <Link to="/login" className="text-white border-2 border-yellow-400 px-5 py-2 rounded-full hover:bg-yellow-400 hover:text-black transition-all">Log In</Link>
         )}
       </div>
 
-      {/* Mobile Menu Toggle */}
+      {/* Mobile Menu Button */}
       <button onClick={() => setMobileMenu(!mobileMenu)} className="md:hidden text-white text-3xl focus:outline-none">
         {mobileMenu ? <FiX /> : <FiMenu />}
       </button>
@@ -135,10 +115,20 @@ function Navbar() {
               {item}
             </Link>
           ))}
+          {/* User Profile & Logout (Mobile) */}
+          {userData && (
+            <div className="w-full flex flex-col items-center">
+              <button className="w-10 h-10 rounded-full bg-yellow-500 text-black text-lg font-bold flex items-center justify-center">
+                {userData.name[0].toUpperCase()}
+              </button>
+              {!userData.isAccountVerified && (
+                <button onClick={sendVerificationOtp} className="mt-2 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600">Verify Email</button>
+              )}
+              <button onClick={logout} className="mt-2 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">Logout</button>
+            </div>
+          )}
           {!userData && (
-            <Link to="/login" onClick={() => setMobileMenu(false)} className="border-2 border-yellow-400 px-4 py-2 rounded-full hover:bg-yellow-400 hover:text-black transition-all">
-              Log In
-            </Link>
+            <Link to="/login" onClick={() => setMobileMenu(false)} className="border-2 border-yellow-400 px-4 py-2 rounded-full hover:bg-yellow-400 hover:text-black transition-all">Log In</Link>
           )}
         </div>
       )}
