@@ -36,8 +36,11 @@ const transporter = require('../config/nodemailer.js');
         httpOnly: true,
         secure: process.env.NODE_ENV==='production'?true:false,
         sameSite: process.env.NODE_ENV==='production'?'none':'strict',
-        maxAge: 1000*60*60*7*24
-    })
+        maxAge: 1000*60*60*7*24,
+         partitioned: true // New attribute for modern browsers
+          });
+          
+
     //Sending Welcome email when user create account for the first time
     const mailOptions = {
         from: process.env.SENDER_EMAIL || "varad.jadhav21@gmail.com",
@@ -80,7 +83,8 @@ const transporter = require('../config/nodemailer.js');
         httpOnly: true,
         secure: process.env.NODE_ENV==='production'?true:false,
         sameSite: process.env.NODE_ENV==='production'?'none':'strict',
-        maxAge: 1000*60*60*7*24
+        maxAge: 1000*60*60*7*24,
+        partitioned: true 
     })
     return res.json({success:true});
     }
