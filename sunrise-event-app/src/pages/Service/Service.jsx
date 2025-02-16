@@ -10,10 +10,10 @@ const Services = () => {
       <Navbar />
       <div className="bg-gradient-to-r mt-8 from-red-600 via-yellow-300 to-orange-500 text-white py-16 px-6">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-6xl font-extrabold text-white mb-8 font-serif drop-shadow-lg">
+          <h2 className=" text-slate-900 text-6xl font-extrabold text-white mb-8 font-serif drop-shadow-lg">
             Our Services
           </h2>
-          <p className="text-lg text-gray-200 mb-14 font-light max-w-2xl mx-auto leading-relaxed">
+          <p className=" text-slate-900 text-lg text-gray-200 mb-14 font-light max-w-2xl mx-auto leading-relaxed">
             Experience the essence of a grand Indian wedding with our premium services.
           </p>
 
