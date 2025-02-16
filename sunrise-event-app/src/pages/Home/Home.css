@@ -1,11 +1,4 @@
 
-.button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-    margin-bottom: 80px;
-}
 
 /* Floating WhatsApp Button */
 .whatsapp-button {
