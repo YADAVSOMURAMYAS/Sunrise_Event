@@ -7,7 +7,7 @@ import './PageNotFound.css'; // Import the CSS file
 const PageNotFound = () => {
   return (
     <div className="page-not-found">
-      <Navbar />
+      
       <div className="page-not-found-container">
         <img src={error} className='img' alt="404 Not Found" />
         <h1>Oops! Page Not Found</h1>
