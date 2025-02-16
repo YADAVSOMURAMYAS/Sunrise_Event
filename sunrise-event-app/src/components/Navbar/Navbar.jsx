@@ -31,7 +31,7 @@ function Navbar() {
   const sendVerificationOtp = async () => {
     try {
       axios.defaults.withCredentials = true;
-      const { data } = await axios.post(${backendUrl}/api/auth/send-verify-otp);
+      const { data } = await axios.post(`${backendUrl}/api/auth/send-verify-otp`);
       if (data.success) {
         navigate("/email-verify");
         toast.success("OTP sent successfully");
@@ -58,7 +58,7 @@ function Navbar() {
   const logout = async () => {
     try {
       axios.defaults.withCredentials = true;
-      const { data } = await axios.post(${backendUrl}/api/auth/logout);
+      const { data } = await axios.post(`${backendUrl}/api/auth/logout`);
       if (data.success) {
         setUserData(null);
         setIsLoggedin(false);
@@ -74,13 +74,13 @@ function Navbar() {
   };
 
   return (
-    <nav className={fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || !isHomePage ? "bg-gradient-to-r from-[#1a1a2e] to-[#16213e] shadow-xl py-3" : "bg-transparent py-4"} px-6 flex justify-between items-center}>
-      <div className="text-3xl font-bold text-white tracking-wider cursor-pointer" onClick={() => navigate("/")}> 
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || !isHomePage ? "bg-gradient-to-r from-[#1a1a2e] to-[#16213e] shadow-xl py-3" : "bg-transparent py-4"} px-6 flex justify-between items-center`}>
+      <div className="text-3xl font-bold text-white tracking-wider cursor-pointer" onClick={() => navigate("/")}>
         <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">Sunrise</span> Events
       </div>
-      <div className={hidden md:flex gap-8 items-center ${mobileMenu ? "hidden" : "flex"}}>
+      <div className={`hidden md:flex gap-8 items-center ${mobileMenu ? "hidden" : "flex"}`}>
         {["Home", "Gallery", "Services", "Booking", "Contact"].map((item, index) => (
-          <Link key={index} to={item === "Home" ? "/" : /${item.toLowerCase()}} className="text-white text-lg font-medium tracking-wide relative group transition-all hover:text-yellow-500">
+          <Link key={index} to={item === "Home" ? "/" : `/${item.toLowerCase()}`} className="text-white text-lg font-medium tracking-wide relative group transition-all hover:text-yellow-500">
             {item}
             <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-500 group-hover:w-full transition-all duration-300"></span>
           </Link>
@@ -113,7 +113,7 @@ function Navbar() {
       {mobileMenu && (
         <div className="absolute top-14 right-4 w-64 bg-[#1a1a2e] shadow-lg rounded-lg flex flex-col items-center gap-4 py-4 text-white text-lg">
           {["Home", "Gallery", "Services", "Booking", "Contact"].map((item, index) => (
-            <Link key={index} to={item === "Home" ? "/" : /${item.toLowerCase()}} onClick={() => setMobileMenu(false)} className="hover:text-yellow-400">
+            <Link key={index} to={item === "Home" ? "/" : `/${item.toLowerCase()}`} onClick={() => setMobileMenu(false)} className="hover:text-yellow-400">
               {item}
             </Link>
           ))}
