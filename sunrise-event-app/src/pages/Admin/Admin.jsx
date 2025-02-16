@@ -8,7 +8,7 @@ const Admin = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/events")
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/events`)
       .then((res) => res.json())
       .then((data) => {
         setBookings(data);
@@ -19,7 +19,7 @@ const Admin = () => {
         setLoading(false);
       });
   }, []);
-
+  
   // Convert bookings into calendar format
   const calendarEvents = bookings.map((booking) => ({
     id: booking._id,
