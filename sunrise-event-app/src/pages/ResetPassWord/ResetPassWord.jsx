@@ -1,5 +1,5 @@
 import React, { useState, useRef, useContext } from "react";
-import "./ResetPassword.css";
+
 import logo from "../../assets/logo.png";
 import { AppContent } from "../../context/AppContext";
 import axios from "axios";
