@@ -18,11 +18,15 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
-    // origin:"http://localhost:5173",
-    credentials: true,
+    origin: "https://sunrise-event.vercel.app", // Allow only this origin
+    methods: "GET,POST,PUT,DELETE,OPTIONS",
+    allowedHeaders: "Content-Type,Authorization",
+    credentials: true, // Allow cookies/auth headers
   })
 );
+
+// Handle Preflight Requests
+app.options("*", cors());
 
 // Connect to MongoDB
 mongoose
