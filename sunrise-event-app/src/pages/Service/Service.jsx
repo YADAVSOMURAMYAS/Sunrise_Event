@@ -8,7 +8,7 @@ const Services = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-gradient-to-r from-yellow-400 to-orange-500 mt-8 from-red-600 via-yellow-300 to-orange-500 text-white py-16 px-6">
+      <div className="bg-gradient-to-r from-yellow-300 to-orange-300 mt-8  py-16 px-6">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className=" text-slate-900 text-6xl font-extrabold mb-8 font-serif drop-shadow-lg">
             Our Services
