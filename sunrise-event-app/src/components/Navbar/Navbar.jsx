@@ -32,11 +32,20 @@ function Navbar() {
     if (userData?.role === "admin") navigate("/admin");
     else navigate("/");
   };
-
   const logout = async () => {
     try {
-      const { data } = await fetch(`${backendUrl}/api/auth/logout`, { method: "POST", credentials: "include" });
-      if (data.success) {
+      const response = await fetch(`${backendUrl}/api/auth/logout`, {
+        method: "POST",
+        credentials: "include",  // Ensures cookies are included in the request
+      });
+  
+      if (!response.ok) {
+        throw new Error("Logout request failed");
+      }
+  
+      const result = await response.json();  // Parse JSON manually
+  
+      if (result.success) {
         setUserData(null);
         setIsLoggedin(false);
         navigate("/");
@@ -45,6 +54,7 @@ function Navbar() {
       console.error("Logout failed", err);
     }
   };
+  
 
   return (
     <nav
