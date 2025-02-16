@@ -1,21 +1,20 @@
 import React from "react";
-import "./MultiEvent3.css";
 import calendarImg from "../../assets/marriageHome3.png"; // Replace with actual image path
 
 const MultiEvent3 = () => {
   return (
-    <div className="personalize-container flex flex-row">
-        <div className="image-section basis-2/3">
-        <img src={calendarImg} alt="Calendar" className="calendar-image" />
-        </div>
-      <div className="text-section basis-1/3 flex flex-col pt-60 pr-20">
-        <h2 className="text-4xl pb-5">
-          <div className="number text-9xl pb-5">03</div> Golden Glow: Celebrate Your Haldi Ceremony
-        </h2>
-        <p className="text-lg ">
-        Immerse yourself in the vibrant hues of turmeric and traditions with our expert Haldi ceremony planning. From floral décor to soulful music, we curate every detail to create a joyous and heartwarming pre-wedding celebration. Let the laughter, rituals, and golden glow set the perfect tone for your big day!</p>
+    <div className="mt-10 personalize-container flex flex-col md:flex-row">
+      <div className="image-section md:basis-2/3">
+        <img src={calendarImg} alt="Calendar" className="calendar-image w-full md:w-auto" />
       </div>
-      
+      <div className="text-section md:basis-1/3 flex flex-col pt-10 md:pt-60 px-6 md:pr-20 text-center md:text-left">
+        <h2 className="text-3xl md:text-4xl pb-3 md:pb-5">
+          <div className="number text-7xl md:text-9xl pb-3 md:pb-5">03</div> 
+          Golden Glow: Celebrate Your Haldi Ceremony
+        </h2>
+        <p className="text-base md:text-lg">
+        Immerse your Haldi ceremony in vibrant colors and a touch of tradition with our exquisitely curated seating arrangements. Whether it’s a cozy backyard setup or a grand festive gathering, we provide stylish decor and comfortable seating that complements the joyous spirit of this sacred ritual. Let every moment be filled with laughter, love, and a beautifully arranged space where traditions meet elegance!             </p>
+      </div>
     </div>
   );
 };

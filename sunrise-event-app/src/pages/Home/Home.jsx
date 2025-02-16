@@ -31,7 +31,6 @@ const Home = () => {
       <MultiEvent2 />
       <MultiEvent3 />
       <MultiEvent4 />
-      <Button/>
       
       <BookingSection />
       <GallerySection />
