@@ -1,7 +1,6 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
 import "./EmailVerify.css";
 import logo from "../../assets/logo.png";
-import Button from "@mui/material/Button";
 import { AppContent } from "../../context/AppContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -17,13 +16,12 @@ const EmailVerify = () => {
 
   const handleChange = (index, event) => {
     const value = event.target.value;
-    if (isNaN(value)) return; // Only allow numbers
+    if (isNaN(value)) return;
 
     const newOtp = [...otp];
-    newOtp[index] = value.slice(-1); // Only take the last digit
+    newOtp[index] = value.slice(-1);
     setOtp(newOtp);
 
-    // Move focus to the next input field
     if (value && index < 5) {
       inputRefs.current[index + 1].focus();
     }
@@ -37,19 +35,13 @@ const EmailVerify = () => {
 
   const handlePaste = (e) => {
     e.preventDefault();
-    const pastedText = e.clipboardData.getData("text");
-    const pasteArray = pastedText.split("");
-
-    pasteArray.forEach((char, index) => {
-      if (inputRefs.current[index]) {
-        inputRefs.current[index].value = char;
-      }
-    });
+    const pastedText = e.clipboardData.getData("text").slice(0, 6);
+    setOtp(pastedText.split(""));
   };
 
   const onSubmitHandler = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
       const otpArray = inputRefs.current.map((e) => e.value);
       const otp = otpArray.join("");
       const { data } = await axios.post(`${backendUrl}/api/auth/verify-account`, { otp });
@@ -65,29 +57,31 @@ const EmailVerify = () => {
       toast.error(error.message);
     }
   };
+
   useEffect(() => {
-    if (isLoggedin && userData && userData.isAccountVerified) {
+    if (isLoggedin && userData?.isAccountVerified) {
       navigate("/");
     }
   }, [isLoggedin, userData, navigate]);
-  
+
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100 relative">
-      {/* Logo at the top-right corner */}
+      {/* Logo - Positioned Top Left */}
       <img
         src={logo}
         alt="Logo"
-        className="absolute top-5 right-8 w-28 cursor-pointer"
-        onClick={() => console.log("Navigate to home")}
+        className="absolute top-5 left-8 w-28 cursor-pointer"
+        onClick={() => navigate("/")}
       />
 
-      {/* Verification Box */}
-      <div className="bg-white p-8 rounded-lg shadow-lg w-96 text-center">
+      {/* Verification Box - Increased Width */}
+      <div className="bg-white p-8 sm:p-10 rounded-lg shadow-lg w-96 sm:w-[450px] text-center">
         <h2 className="text-2xl font-semibold text-gray-800">Email Verification</h2>
         <p className="text-gray-600 mt-2">A 6-digit OTP has been sent to your email.</p>
 
         <form onSubmit={onSubmitHandler} className="mt-6">
-          <div className="flex justify-center space-x-4">
+          {/* OTP Inputs - Better Spacing */}
+          <div className="flex justify-center space-x-3 sm:space-x-4">
             {otp.map((digit, index) => (
               <input
                 key={index}
@@ -98,14 +92,15 @@ const EmailVerify = () => {
                 onPaste={handlePaste}
                 ref={(el) => (inputRefs.current[index] = el)}
                 maxLength={1}
-                className="w-14 h-14 text-2xl text-center border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                className="w-12 h-12 sm:w-14 sm:h-14 text-2xl text-center border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
               />
             ))}
           </div>
 
-          <Button type="submit" variant="contained" className="w-full mt-6 my-3">
-            Verify
-          </Button>
+          {/* Custom Tailwind Button */}
+          <button type="submit" className="w-full mt-6 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-all">
+            VERIFY
+          </button>
         </form>
       </div>
     </div>

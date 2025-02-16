@@ -8,7 +8,6 @@ import MailIcon from '@mui/icons-material/Mail';
 import PersonIcon from '@mui/icons-material/Person';
 import LockIcon from '@mui/icons-material/Lock';
 import Button from '@mui/material/Button';
-import './Login.css'; // Import the CSS file
 
 const Login = () => {
   const [state, setState] = useState('Sign Up');
@@ -23,13 +22,8 @@ const Login = () => {
     try {
       axios.defaults.withCredentials = true;
       if (state === 'Sign Up') {
-        const { data } = await axios.post(backendUrl + '/api/auth/register', {
-          name,
-          email,
-          password,
-        });
+        const { data } = await axios.post(`${backendUrl}/api/auth/register`, { name, email, password });
         if (data.success) {
-          console.log('Login/Signup successful');
           setIsLoggedin(true);
           getUserData();
           navigate('/');
@@ -37,12 +31,8 @@ const Login = () => {
           toast.error(data.message);
         }
       } else {
-        const { data } = await axios.post(backendUrl + '/api/auth/login', {
-          email,
-          password,
-        });
+        const { data } = await axios.post(`${backendUrl}/api/auth/login`, { email, password });
         if (data.success) {
-          console.log('Login/Signup successful');
           setIsLoggedin(true);
           getUserData();
           navigate('/');
@@ -51,105 +41,105 @@ const Login = () => {
         }
       }
     } catch (err) {
-      console.error('Error during login/signup:', err);
-      console.error('Error response:', err.response);
       toast.error(err.response?.data?.message || 'An error occurred');
     }
   };
 
   return (
-    <div className="login-container">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      {/* Logo at Top Left */}
       <img
-        onClick={() => navigate('/')}
         src={logo}
         alt="Logo"
-        className="login-logo"
+        className="absolute top-5 left-5 w-28 cursor-pointer md:w-32"
+        onClick={() => navigate('/')}
       />
-      <div className="login-form-container">
-        <h2 className="login-form-title">
-          {state === 'Sign Up' ? 'Create Account' : 'Login'}
-        </h2>
-        <p className="login-form-subtitle">
-          {state === 'Sign Up' ? 'Create Your Account' : 'Login to Your Account'}
-        </p>
-        <form onSubmit={onSubmitHandler}>
+
+      {/* Form Container */}
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm md:max-w-md text-center">
+        <h2 className="text-2xl font-semibold text-gray-800">{state === 'Sign Up' ? 'Create Account' : 'Login'}</h2>
+        <p className="text-gray-600 mt-2">{state === 'Sign Up' ? 'Create Your Account' : 'Login to Your Account'}</p>
+
+        <form onSubmit={onSubmitHandler} className="mt-4">
           {state === 'Sign Up' && (
-            <div className="login-input-container">
+            <div className="flex items-center border rounded-md p-2 mb-3 bg-gray-100">
               <PersonIcon sx={{ color: 'black' }} />
               <input
-                onChange={(e) => setName(e.target.value)}
-                value={name}
-                className="login-input"
                 type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="Full Name"
                 required
+                className="w-full bg-transparent outline-none px-2 text-black"
               />
             </div>
           )}
-          <div className="login-input-container">
+          
+          <div className="flex items-center border rounded-md p-2 mb-3 bg-gray-100">
             <MailIcon sx={{ color: 'black' }} />
             <input
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
               type="email"
-              className="login-input"
-              placeholder="Email Id"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email ID"
               required
+              className="w-full bg-transparent outline-none px-2 text-black"
             />
           </div>
-          <div className="login-input-container">
+
+          <div className="flex items-center border rounded-md p-2 mb-3 bg-gray-100">
             <LockIcon sx={{ color: 'black' }} />
             <input
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
               type="password"
-              className="login-input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               required
+              className="w-full bg-transparent outline-none px-2 text-black"
             />
           </div>
-          <p
-            onClick={() => navigate('/reset-password')}
-            className="login-forgot-password"
-          >
+
+          <p onClick={() => navigate('/reset-password')} className="text-blue-500 text-sm cursor-pointer mb-4">
             Forgot Password?
           </p>
+
           <Button
-  type="submit"
-  variant="contained"
-  fullWidth
-  sx={{
-    backgroundColor: '#fde047', // Yellow-300
-    color: '#000', // Black text
-    fontFamily:"Outfit",
-    borderRadius:"15px",
-    '&:hover': {
-      backgroundColor: '#facc15', // Yellow-400 on hover
-      transform: 'none', // Prevent scaling
-    },
-    transition: 'background-color 0.3s ease', // Smooth transition for background color
-  }}
->
-  {state}
-</Button>
+            type="submit"
+            variant="contained"
+            fullWidth
+            sx={{
+              backgroundColor: '#fde047',
+              color: '#000',
+              fontFamily: 'Outfit',
+              borderRadius: '15px',
+              '&:hover': {
+                backgroundColor: '#facc15',
+                transform: 'none',
+              },
+              transition: 'background-color 0.3s ease',
+            }}
+          >
+            {state}
+          </Button>
+
           {state === 'Sign Up' ? (
-            <p className="login-toggle-text">
+            <p className="text-sm mt-4">
               Already Have an Account?{' '}
               <span
                 onClick={() => setState('Login')}
-                className="login-toggle-link"
+                className="text-blue-600 font-semibold cursor-pointer"
               >
                 Login Here
               </span>
             </p>
           ) : (
-            <p className="login-toggle-text">
+            <p className="text-sm mt-4">
               Don't Have an Account?{' '}
               <span
                 onClick={() => setState('Sign Up')}
-                className="login-toggle-link"
+                className="text-blue-600 font-semibold cursor-pointer"
               >
-                SignUp
+                Sign Up
               </span>
             </p>
           )}
