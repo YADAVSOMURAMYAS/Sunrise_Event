@@ -22,11 +22,21 @@ const Confirmation = () => {
         <p className="text-lg text-gray-700 mb-6">
           Thank you for submitting your event details. You can now download your event details as a PDF.
         </p>
+
+        {/* Download PDF Button */}
         <button
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all"
+          className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all mb-3"
           onClick={() => generateEventPDF(eventData)}
         >
           Download PDF
+        </button>
+
+        {/* Home Button */}
+        <button
+          className="bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-gray-700 transition-all"
+          onClick={() => navigate("/")} // ✅ Navigate to home page
+        >
+          Home
         </button>
       </div>
     </div>
