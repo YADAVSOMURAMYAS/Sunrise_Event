@@ -59,7 +59,8 @@ const Step3 = ({ formData, setFormData, nextStep, prevStep }) => {
           Services Required 🛠️
         </label>
         <div className="flex flex-wrap gap-3 mt-2">
-          {["Catering", "Photography", "Decorations", "Music"].map((service) => (
+          {["Catering", "Photography", "Decorations", "Music", "Lighting", "Transportation", "Security", "AV Equipment", "Entertainment", "Venue Setup", "Event Planning", "Event Coordination", "Guest Services", "Favors & Gifts", "Floral Arrangements", "Rentals", "Audio-Visual Support", "Sound System", "Bartending", "Cleaning Services"]
+.map((service) => (
             <label key={service} className="flex items-center gap-2 bg-yellow-200 px-4 py-2 rounded-lg cursor-pointer shadow-md hover:bg-yellow-300 transition duration-300">
               <input
                 type="checkbox"
