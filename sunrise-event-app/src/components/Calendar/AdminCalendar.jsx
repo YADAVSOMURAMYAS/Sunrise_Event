@@ -3,6 +3,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
+import './AdminCalendar.css'
 
 const AdminCalendar = ({ events, onEventClick }) => {
   const calendarRef = useRef(null);
@@ -48,23 +49,30 @@ const AdminCalendar = ({ events, onEventClick }) => {
       {/* List View for screens < 1024px */}
       {isListView ? (
         <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-          <h3 className="text-lg font-semibold text-gray-700 mb-2">📅 Upcoming Events</h3>
+          <h3 className="text-lg font-semibold text-gray-700 mb-2">📅 Upcoming & Past Events</h3>
           {events.length === 0 ? (
-            <p className="text-gray-600 text-center">No upcoming events.</p>
+            <p className="text-gray-600 text-center">No events.</p>
           ) : (
             <ul className="space-y-3">
-              {events.map((event) => (
-                <li
-                  key={event.id}
-                  className="bg-white p-4 rounded-lg shadow-sm border-l-4 border-[#FF9800] cursor-pointer hover:bg-gray-100 transition"
-                  onClick={() => onEventClick(event.extendedProps)}
-                >
-                  <p className="font-semibold text-[#FF9800]">{event.title}</p>
-                  <p className="text-sm text-gray-600">
-                    📅 {new Date(event.start).toLocaleDateString()} | 📍 {event.extendedProps.location}
-                  </p>
-                </li>
-              ))}
+              {events.map((event) => {
+                const isPast = new Date(event.start) < new Date();
+                return (
+                  <li
+                    key={event.id}
+                    className={`p-4 rounded-lg shadow-sm border-l-4 cursor-pointer transition ${
+                      isPast ? "past-event" : "border-[#FF9800] hover:bg-gray-100"
+                    }`}
+                    onClick={() => onEventClick(event.extendedProps)}
+                  >
+                    <p className={`font-semibold ${isPast ? "text-gray-500" : "text-[#FF9800]"}`}>
+                      {event.title}
+                    </p>
+                    <p className={`text-sm ${isPast ? "text-gray-400" : "text-gray-600"}`}>
+                      📅 {new Date(event.start).toLocaleDateString()} | 📍 {event.extendedProps.location}
+                    </p>
+                  </li>
+                );
+              })}
             </ul>
           )}
         </div>
@@ -82,8 +90,11 @@ const AdminCalendar = ({ events, onEventClick }) => {
             }}
             height="auto"
             contentHeight="auto"
-            aspectRatio={1.5} // Ensures proper scaling
+            aspectRatio={1.5}
             events={events}
+            eventClassNames={(event) =>
+              new Date(event.event.start) < new Date() ? "past-event" : ""
+            }
             buttonText={{
               today: "Today",
               month: "📆 Month",
@@ -101,9 +112,19 @@ const AdminCalendar = ({ events, onEventClick }) => {
             }}
             eventClick={(info) => onEventClick(info.event.extendedProps)}
             eventContent={(eventInfo) => (
-              <div className="cursor-pointer p-2 bg-white border-l-4 border-[#FF9800] shadow-sm rounded-md text-sm md:text-base">
-                <b className="text-[#FF9800]">{eventInfo.event.title}</b>
-                <p className="text-gray-600">{eventInfo.event.extendedProps.location}</p>
+              <div
+                className={`cursor-pointer p-2 bg-white border-l-4 shadow-sm rounded-md text-sm md:text-base ${
+                  new Date(eventInfo.event.start) < new Date()
+                    ? "past-event"
+                    : "border-[#FF9800]"
+                }`}
+              >
+                <b className={new Date(eventInfo.event.start) < new Date() ? "text-gray-500" : "text-[#FF9800]"}>
+                  {eventInfo.event.title}
+                </b>
+                <p className={new Date(eventInfo.event.start) < new Date() ? "text-gray-400" : "text-gray-600"}>
+                  {eventInfo.event.extendedProps.location}
+                </p>
               </div>
             )}
           />

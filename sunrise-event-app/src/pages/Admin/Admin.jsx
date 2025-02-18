@@ -21,11 +21,14 @@ const Admin = () => {
       });
   }, []);
 
+  const today = new Date();
+  
   const calendarEvents = bookings.map((booking) => ({
     id: booking._id,
     title: booking.eventType,
     start: booking.eventDate,
     extendedProps: { ...booking },
+    className: new Date(booking.eventDate) < today ? "text-gray-500" : "", // Grayscale past events
   }));
 
   return (
@@ -80,8 +83,8 @@ const Admin = () => {
                 <span className="animate-spin rounded-full h-8 w-8 border-t-2 border-[#FF9800]"></span>
                 <p className="ml-2 text-[#FF9800]">Loading bookings...</p>
               </div>
-            ) : bookings.length === 0 ? (
-              <p className="text-[#FF9800] text-center">No bookings available.</p>
+            ) : bookings.filter((booking) => new Date(booking.eventDate) >= today).length === 0 ? (
+              <p className="text-[#FF9800] text-center">No upcoming bookings available.</p>
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full bg-white shadow-md rounded-xl border-4 border-[#FFD700]">
@@ -96,24 +99,26 @@ const Admin = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {bookings.map((booking) => (
-                      <tr
-                        key={booking._id}
-                        className={`border-t text-center hover:bg-[#FFF8E1] cursor-pointer transition-all duration-200 ${
-                          selectedEvent?.eventDate === booking.eventDate ? "bg-[#FFE082]" : ""
-                        }`}
-                        onClick={() => setSelectedEvent({ ...booking })}
-                      >
-                        <td className="px-4 py-3">{booking.eventType}</td>
-                        <td className="px-4 py-3">{new Date(booking.eventDate).toLocaleDateString()}</td>
-                        <td className="px-4 py-3">{booking.location}</td>
-                        <td className="px-4 py-3">{booking.guestCount}</td>
-                        <td className="px-4 py-3">{booking.fullName}</td>
-                        <td className="px-4 py-3 text-[#FF9800] font-bold cursor-pointer">
-                          View Details
-                        </td>
-                      </tr>
-                    ))}
+                    {bookings
+                      .filter((booking) => new Date(booking.eventDate) >= today) // Hide past events
+                      .map((booking) => (
+                        <tr
+                          key={booking._id}
+                          className={`border-t text-center hover:bg-[#FFF8E1] cursor-pointer transition-all duration-200 ${
+                            selectedEvent?.eventDate === booking.eventDate ? "bg-[#FFE082]" : ""
+                          }`}
+                          onClick={() => setSelectedEvent({ ...booking })}
+                        >
+                          <td className="px-4 py-3">{booking.eventType}</td>
+                          <td className="px-4 py-3">{new Date(booking.eventDate).toLocaleDateString()}</td>
+                          <td className="px-4 py-3">{booking.location}</td>
+                          <td className="px-4 py-3">{booking.guestCount}</td>
+                          <td className="px-4 py-3">{booking.fullName}</td>
+                          <td className="px-4 py-3 text-[#FF9800] font-bold cursor-pointer">
+                            View Details
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
               </div>
@@ -121,15 +126,6 @@ const Admin = () => {
           </div>
         </div>
       </div>
-
-      {/* Floating Action Button
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className="fixed bottom-6 right-6 bg-gradient-to-r from-[#FFC107] to-[#FF9800] text-white p-4 rounded-full shadow-xl hover:shadow-2xl transition-all"
-      >
-        ➕ Create Event
-      </motion.button> */}
     </>
   );
 };

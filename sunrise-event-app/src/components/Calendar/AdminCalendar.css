@@ -1,0 +1,15 @@
+.past-event {
+    color: #6b7280; /* Gray text */
+    background-color: white !important; /* Keep background white */
+    opacity: 1; /* No fading */
+    pointer-events: auto; /* Allow clicking on past events */
+  }
+  
+  .past-event b {
+    color: #6b7280 !important; /* Dark gray for titles */
+  }
+  
+  .past-event p {
+    color: #9ca3af !important; /* Lighter gray for details */
+  }
+  
