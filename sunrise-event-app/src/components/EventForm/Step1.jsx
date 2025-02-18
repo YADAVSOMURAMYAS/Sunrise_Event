@@ -3,17 +3,32 @@ import React, { useState } from "react";
 const Step1 = ({ formData, setFormData, nextStep }) => {
   const [errors, setErrors] = useState({});
 
+  // Get tomorrow's date in YYYY-MM-DD format
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);  // Adding one day to today's date
+  const minDate = tomorrow.toISOString().split('T')[0];  // Convert to string (YYYY-MM-DD)
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const validateForm = () => {
     let newErrors = {};
+
+    // Event Type
     if (!formData.eventType) newErrors.eventType = "Event type is required.";
-    if (!formData.eventDate) newErrors.eventDate = "Event date is required.";
+    // Event Date (Ensure it's from tomorrow onwards)
+    if (!formData.eventDate) {
+      newErrors.eventDate = "Event date is required.";
+    } else if (formData.eventDate < minDate) {
+      newErrors.eventDate = "Event date must be tomorrow or later.";
+    }
+    // Location
     if (!formData.location.trim()) newErrors.location = "Location cannot be empty.";
+    // Guest Count (Ensure it's positive)
     if (!formData.guestCount || formData.guestCount <= 0)
-      newErrors.guestCount = "Enter a valid guest count.";
+      newErrors.guestCount = "Enter a valid guest count greater than 0.";
+    // Budget Range
     if (!formData.budgetRange) newErrors.budgetRange = "Budget range is required.";
 
     setErrors(newErrors);
@@ -43,10 +58,22 @@ const Step1 = ({ formData, setFormData, nextStep }) => {
           value={formData.eventType}
           onChange={handleChange}
         >
-          <option value="">Select Event Type</option>
+          <option value="">🎉 Select Event Type</option>
           <option value="wedding">💍 Wedding</option>
+          <option value="reception">🎊 Reception</option>
+          <option value="sangeet">🎶 Sangeet</option>
+          <option value="haldi">🌿 Haldi</option>
+          <option value="mehendi">🎨 Mehendi</option>
+          <option value="engagement">💍 Engagement</option>
+          <option value="anniversary">❤️ Anniversary</option>
           <option value="birthday">🎂 Birthday</option>
-          <option value="corporate">🏢 Corporate</option>
+          <option value="baby_shower">👶 Baby Shower</option>
+          <option value="corporate">🏢 Corporate Event</option>
+          <option value="seminar">📢 Seminar</option>
+          <option value="concert">🎤 Concert</option>
+          <option value="exhibition">🖼️ Exhibition</option>
+          <option value="furniture_rental">🪑 Rental Furniture & Seating</option>
+          <option value="custom">🎭 Custom Celebration</option>
         </select>
         {errors.eventType && <p className="text-red-500 text-sm mt-1">{errors.eventType}</p>}
       </div>
@@ -62,6 +89,7 @@ const Step1 = ({ formData, setFormData, nextStep }) => {
           }`}
           value={formData.eventDate}
           onChange={handleChange}
+          min={minDate} // Ensures only tomorrow or later can be selected
         />
         {errors.eventDate && <p className="text-red-500 text-sm mt-1">{errors.eventDate}</p>}
       </div>
@@ -109,17 +137,20 @@ const Step1 = ({ formData, setFormData, nextStep }) => {
           value={formData.budgetRange}
           onChange={handleChange}
         >
-          <option value="">Select Budget Range</option>
-          <option value="low"> Low (₹10,000 - ₹50,000)</option>
-          <option value="medium"> Medium (₹50,000 - ₹2,00,000)</option>
-          <option value="high"> High (₹2,00,000+)</option>
+          <option value="">💰 Select Budget Range</option>
+          <option value="very_low">💸 Basic (₹5,000 - ₹10,000)</option>
+          <option value="low">💵 Low (₹10,000 - ₹50,000)</option>
+          <option value="medium_low">💰 Moderate (₹50,000 - ₹1,00,000)</option>
+          <option value="medium">💲 Medium (₹1,00,000 - ₹2,00,000)</option>
+          <option value="high">💎 High (₹2,00,000 - ₹5,00,000)</option>
+          <option value="premium">🏆 Premium (₹5,00,000 - ₹10,00,000)</option>
+          <option value="luxury">✨ Luxury (₹10,00,000+)</option>
         </select>
         {errors.budgetRange && <p className="text-red-500 text-sm mt-1">{errors.budgetRange}</p>}
       </div>
 
-      {/* Buttons */}
+      {/* Next Button */}
       <div className="flex justify-between">
-        
         <button
           className="px-6 py-3 text-lg font-semibold text-white bg-yellow-600 rounded-lg shadow-md hover:bg-yellow-700 transition duration-300"
           onClick={handleNext}

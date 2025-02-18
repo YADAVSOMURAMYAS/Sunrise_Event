@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Step2 = ({ formData, setFormData, nextStep, prevStep }) => {
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const [errors, setErrors] = useState({});
+
+  // Validation function
+  const validateInput = (name, value) => {
+    let errorMsg = "";
+    if (name === "email") {
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailPattern.test(value)) {
+        errorMsg = "Please enter a valid email address.";
+      }
+    } else if (name === "phone") {
+      const phonePattern = /^[6-9]\d{9}$/; // Ensures 10 digits and starts with 6-9
+      if (!phonePattern.test(value)) {
+        errorMsg = "Enter a valid 10-digit phone number starting with 6-9.";
+      }
+    }
+    return errorMsg;
   };
+
+  // Handle input change with validation
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    // Validate and set errors
+    const errorMsg = validateInput(name, value);
+    setErrors({ ...errors, [name]: errorMsg });
+  };
+
+  // Check if the form is valid
+  const isFormValid = !errors.email && !errors.phone && formData.email && formData.phone;
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-yellow-100 shadow-lg rounded-lg border border-yellow-300">
@@ -13,9 +41,7 @@ const Step2 = ({ formData, setFormData, nextStep, prevStep }) => {
 
       {/* Full Name */}
       <div className="mb-4">
-        <label className="block text-lg font-medium text-yellow-900">
-          Full Name
-        </label>
+        <label className="block text-lg font-medium text-yellow-900">Full Name</label>
         <input
           type="text"
           name="fullName"
@@ -29,9 +55,7 @@ const Step2 = ({ formData, setFormData, nextStep, prevStep }) => {
 
       {/* Email */}
       <div className="mb-4">
-        <label className="block text-lg font-medium text-yellow-900">
-          Email
-        </label>
+        <label className="block text-lg font-medium text-yellow-900">Email</label>
         <input
           type="email"
           name="email"
@@ -41,13 +65,12 @@ const Step2 = ({ formData, setFormData, nextStep, prevStep }) => {
           onChange={handleChange}
           required
         />
+        {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email}</p>}
       </div>
 
       {/* Phone Number */}
       <div className="mb-4">
-        <label className="block text-lg font-medium text-yellow-900">
-          Phone Number
-        </label>
+        <label className="block text-lg font-medium text-yellow-900">Phone Number</label>
         <input
           type="tel"
           name="phone"
@@ -57,13 +80,12 @@ const Step2 = ({ formData, setFormData, nextStep, prevStep }) => {
           onChange={handleChange}
           required
         />
+        {errors.phone && <p className="text-red-600 text-sm mt-1">{errors.phone}</p>}
       </div>
 
       {/* Preferred Contact Method */}
       <div className="mb-6">
-        <label className="block text-lg font-medium text-yellow-900">
-          Preferred Contact Method
-        </label>
+        <label className="block text-lg font-medium text-yellow-900">Preferred Contact Method</label>
         <select
           name="preferredContact"
           className="w-full p-3 mt-1 border border-yellow-400 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-600 bg-yellow-50"
@@ -85,8 +107,11 @@ const Step2 = ({ formData, setFormData, nextStep, prevStep }) => {
           ← Back
         </button>
         <button
-          className="px-6 py-3 text-lg font-semibold text-white bg-yellow-600 rounded-lg shadow-md hover:bg-yellow-700 transition duration-300"
-          onClick={nextStep}
+          className={`px-6 py-3 text-lg font-semibold text-white rounded-lg shadow-md transition duration-300 ${
+            isFormValid ? "bg-yellow-600 hover:bg-yellow-700" : "bg-gray-400 cursor-not-allowed"
+          }`}
+          onClick={isFormValid ? nextStep : undefined}
+          disabled={!isFormValid}
         >
           Next →
         </button>
