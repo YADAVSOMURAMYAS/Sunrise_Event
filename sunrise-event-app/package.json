@@ -23,6 +23,7 @@
     "@tailwindcss/vite": "^4.0.4",
     "axios": "^1.7.9",
     "dotenv": "^16.4.7",
+    "framer-motion": "^12.4.4",
     "jspdf": "^2.5.2",
     "jspdf-autotable": "^3.8.4",
     "moment": "^2.30.1",

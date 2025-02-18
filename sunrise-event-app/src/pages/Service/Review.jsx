@@ -35,7 +35,7 @@ function Review() {
                     {reviews.map((review, index) => (
                         <div
                             key={index}
-                            className="bg-gradient-to-r from-pink-500 to-orange-400 p-6 rounded-lg shadow-lg text-white">
+                            className="bg-gradient-to-r from-yellow-500 to-red-400 p-6 rounded-lg shadow-lg text-white">
 
                             <div className="text-yellow-300 flex gap-1 mb-4">
                                 {[...Array(5)].map((_, i) => (
