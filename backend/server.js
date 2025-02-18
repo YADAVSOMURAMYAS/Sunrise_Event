@@ -12,19 +12,37 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(express.static("public"));
-app.use(express.json());
-app.use(cookieParser());
+// ✅ Allowed Frontend URLs for CORS
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://sunrise-event.vercel.app",
+  "https://sunrise-event-517y.vercel.app",
+];
+
 app.use(
   cors({
-     origin: process.env.FRONTEND_URL,
-    
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// Connect to MongoDB
+// ✅ Handle Preflight (OPTIONS) Requests
+app.options("*", cors());
+
+// ✅ Middleware
+app.use(express.static("public"));
+app.use(express.json());
+app.use(cookieParser());
+
+// ✅ Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log("✅ MongoDB connected successfully!"))
@@ -33,19 +51,19 @@ mongoose
     process.exit(1);
   });
 
-// Routes
+// ✅ API Routes
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/events", eventRoutes); // Booking API
 
+// ✅ Root Route
 app.get("/", (req, res) => {
   res.send("🎉 Server is Running!");
 });
 
-// Start Server
-
+// ✅ Start Server
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
 
-module.exports = app; 
+module.exports = app;

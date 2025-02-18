@@ -50,6 +50,7 @@ router.post("/", async (req, res) => {
 // ✅ GET: Fetch All Booked Events (For Admin Panel)
 router.get("/", async (req, res) => {
   try {
+    res.send("Event API is working!");
     const events = await Event.find().sort({ eventDate: -1 }); // Sort by latest events
     res.status(200).json(events);
   } catch (error) {
