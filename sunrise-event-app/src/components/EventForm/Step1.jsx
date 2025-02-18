@@ -119,12 +119,7 @@ const Step1 = ({ formData, setFormData, nextStep }) => {
 
       {/* Buttons */}
       <div className="flex justify-between">
-        <button
-          className="px-6 py-3 text-lg font-semibold text-yellow-900 bg-yellow-300 rounded-lg shadow-md hover:bg-yellow-400 transition duration-300"
-          onClick={() => console.log("Back Button Clicked")}
-        >
-          ← Back
-        </button>
+        
         <button
           className="px-6 py-3 text-lg font-semibold text-white bg-yellow-600 rounded-lg shadow-md hover:bg-yellow-700 transition duration-300"
           onClick={handleNext}
