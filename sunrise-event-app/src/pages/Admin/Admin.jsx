@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AdminCalendar from "../../components/Calendar/AdminCalendar";
 import Navbar from "../../components/Navbar/Navbar";
+import { motion } from "framer-motion";
 
 const Admin = () => {
   const [bookings, setBookings] = useState([]);
@@ -19,35 +20,33 @@ const Admin = () => {
         setLoading(false);
       });
   }, []);
-  
-  // Convert bookings into calendar format
+
   const calendarEvents = bookings.map((booking) => ({
     id: booking._id,
     title: booking.eventType,
     start: booking.eventDate,
-    extendedProps: {
-      eventType: booking.eventType,
-      eventDate: booking.eventDate,
-      location: booking.location,
-      guestCount: booking.guestCount,
-      fullName: booking.fullName,
-      phone: booking.phone,
-      email: booking.email,
-      budget: booking.budget,
-      specialRequests: booking.specialRequests,
-    },
+    extendedProps: { ...booking },
   }));
 
   return (
     <>
       <Navbar />
       <div className="container mx-auto p-6 mt-16">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Admin Dashboard</h2>
+        <h2 className="text-4xl font-extrabold text-black text-center mb-8">
+          Admin Dashboard
+        </h2>
 
-        {/* 📌 Selected Event Details */}
+        {/* Selected Event Details */}
         {selectedEvent && (
-          <div className="bg-white shadow-lg rounded-lg p-6 mb-6">
-            <h3 className="text-2xl font-semibold mb-4">📌 Event Details</h3>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="bg-white shadow-xl rounded-xl p-6 mb-6 border-4 border-[#FFD700] backdrop-blur-md bg-opacity-90"
+          >
+            <h3 className="text-2xl font-semibold text-[#FF9800] mb-4">
+              📌 Event Details
+            </h3>
             <p><strong>Event Type:</strong> {selectedEvent.eventType}</p>
             <p><strong>Date:</strong> {new Date(selectedEvent.eventDate).toLocaleDateString()}</p>
             <p><strong>Location:</strong> {selectedEvent.location}</p>
@@ -57,63 +56,62 @@ const Admin = () => {
             <p><strong>Email:</strong> {selectedEvent.email}</p>
             <p><strong>Budget:</strong> ${selectedEvent.budget}</p>
             <p><strong>Special Requests:</strong> {selectedEvent.specialRequests}</p>
-          </div>
+          </motion.div>
         )}
 
-        {/* 📜 Booking List & 📅 Calendar */}
+        {/* Booking List & Calendar */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* 📆 Event Calendar */}
-          <div className="bg-white shadow-lg rounded-lg p-6">
-            <h3 className="text-xl font-semibold mb-4">📅 Event Calendar</h3>
+          {/* Calendar */}
+          <div className="bg-[#FFF3E0] shadow-xl rounded-xl p-6 border-4 border-[#FFD700]">
+            <h3 className="text-xl font-semibold text-[#FF9800] mb-4">
+              🗓 Event Calendar
+            </h3>
             <AdminCalendar events={calendarEvents} onEventClick={setSelectedEvent} />
           </div>
 
-          {/* 📜 Booking List */}
-          <div className="bg-white shadow-lg rounded-lg p-6">
-            <h3 className="text-xl font-semibold mb-4">📜 Booking List</h3>
+          {/* Booking List */}
+          <div className="bg-white shadow-xl rounded-xl p-6 border-4 border-[#FF9800] backdrop-blur-md bg-opacity-90">
+            <h3 className="text-xl font-semibold text-[#FF9800] mb-4">
+              📋 Booking List
+            </h3>
 
             {loading ? (
-              <p className="text-gray-600">Loading bookings...</p>
+              <div className="flex justify-center items-center">
+                <span className="animate-spin rounded-full h-8 w-8 border-t-2 border-[#FF9800]"></span>
+                <p className="ml-2 text-[#FF9800]">Loading bookings...</p>
+              </div>
             ) : bookings.length === 0 ? (
-              <p className="text-gray-600">No bookings available.</p>
+              <p className="text-[#FF9800] text-center">No bookings available.</p>
             ) : (
               <div className="overflow-x-auto">
-                <table className="min-w-full bg-gray-50 shadow-md rounded-lg border">
-                  <thead className="bg-gray-700 text-white">
+                <table className="w-full bg-white shadow-md rounded-xl border-4 border-[#FFD700]">
+                  <thead className="bg-[#FFD700] text-gray-900">
                     <tr>
-                      <th className="px-4 py-2">Event Type</th>
-                      <th className="px-4 py-2">Date</th>
-                      <th className="px-4 py-2">Location</th>
-                      <th className="px-4 py-2">Guests</th>
-                      <th className="px-4 py-2">Client</th>
-                      <th className="px-4 py-2">Action</th>
+                      <th className="px-4 py-3">Event Type</th>
+                      <th className="px-4 py-3">Date</th>
+                      <th className="px-4 py-3">Location</th>
+                      <th className="px-4 py-3">Guests</th>
+                      <th className="px-4 py-3">Client</th>
+                      <th className="px-4 py-3">Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     {bookings.map((booking) => (
                       <tr
                         key={booking._id}
-                        className="border-t text-center hover:bg-gray-200 cursor-pointer"
-                        onClick={() =>
-                          setSelectedEvent({
-                            eventType: booking.eventType,
-                            eventDate: booking.eventDate,
-                            location: booking.location,
-                            guestCount: booking.guestCount,
-                            fullName: booking.fullName,
-                            phone: booking.phone,
-                            email: booking.email,
-                            budget: booking.budget,
-                            specialRequests: booking.specialRequests,
-                          })
-                        }
+                        className={`border-t text-center hover:bg-[#FFF8E1] cursor-pointer transition-all duration-200 ${
+                          selectedEvent?.eventDate === booking.eventDate ? "bg-[#FFE082]" : ""
+                        }`}
+                        onClick={() => setSelectedEvent({ ...booking })}
                       >
-                        <td className="px-4 py-2">{booking.eventType}</td>
-                        <td className="px-4 py-2">{new Date(booking.eventDate).toLocaleDateString()}</td>
-                        <td className="px-4 py-2">{booking.location}</td>
-                        <td className="px-4 py-2">{booking.guestCount}</td>
-                        <td className="px-4 py-2">{booking.fullName}</td>
-                        <td className="px-4 py-2 text-blue-600 font-bold">View Details</td>
+                        <td className="px-4 py-3">{booking.eventType}</td>
+                        <td className="px-4 py-3">{new Date(booking.eventDate).toLocaleDateString()}</td>
+                        <td className="px-4 py-3">{booking.location}</td>
+                        <td className="px-4 py-3">{booking.guestCount}</td>
+                        <td className="px-4 py-3">{booking.fullName}</td>
+                        <td className="px-4 py-3 text-[#FF9800] font-bold cursor-pointer">
+                          View Details
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -123,6 +121,15 @@ const Admin = () => {
           </div>
         </div>
       </div>
+
+      {/* Floating Action Button
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="fixed bottom-6 right-6 bg-gradient-to-r from-[#FFC107] to-[#FF9800] text-white p-4 rounded-full shadow-xl hover:shadow-2xl transition-all"
+      >
+        ➕ Create Event
+      </motion.button> */}
     </>
   );
 };
