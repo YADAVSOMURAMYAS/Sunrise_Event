@@ -110,9 +110,9 @@ const Step1 = ({ formData, setFormData, nextStep }) => {
           onChange={handleChange}
         >
           <option value="">Select Budget Range</option>
-          <option value="low">💰 Low (₹10,000 - ₹50,000)</option>
-          <option value="medium">💰💰 Medium (₹50,000 - ₹2,00,000)</option>
-          <option value="high">💰💰💰 High (₹2,00,000+)</option>
+          <option value="low"> Low (₹10,000 - ₹50,000)</option>
+          <option value="medium"> Medium (₹50,000 - ₹2,00,000)</option>
+          <option value="high"> High (₹2,00,000+)</option>
         </select>
         {errors.budgetRange && <p className="text-red-500 text-sm mt-1">{errors.budgetRange}</p>}
       </div>
