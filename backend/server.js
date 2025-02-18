@@ -11,8 +11,10 @@ const eventRoutes = require("./routes/eventRoutes.js"); // Event API
 dotenv.config();
 const app = express();
 
+// ✅ Define PORT (Fix Missing Variable)
+const PORT = process.env.PORT || 3000;
 
-// Middleware
+// ✅ Middleware
 app.use(express.static("public"));
 app.use(express.json());
 app.use(cookieParser());
@@ -38,7 +40,10 @@ app.use(
 
 // ✅ Connect to MongoDB
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("✅ MongoDB connected successfully!"))
   .catch((err) => {
     console.error("❌ MongoDB connection error:", err);
@@ -50,13 +55,14 @@ app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/events", eventRoutes); // Booking API
 
+// ✅ Health Check Route
 app.get("/", (req, res) => {
   res.send("🎉 Server is Running!");
 });
 
 // ✅ Start Server
 app.listen(PORT, () => {
-  console.log(`🚀 Server running`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
 
 module.exports = app;
