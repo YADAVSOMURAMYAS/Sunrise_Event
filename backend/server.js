@@ -10,7 +10,7 @@ const eventRoutes = require("./routes/eventRoutes.js"); // Event API
 
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 3000;
+
 
 // Middleware
 app.use(express.static("public"));
@@ -56,7 +56,7 @@ app.get("/", (req, res) => {
 
 // ✅ Start Server
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`🚀 Server running`);
 });
 
 module.exports = app;
